@@ -28,11 +28,14 @@ main: src/main.cpp build/Coordinates.o
 build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
 		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o
 
-test: test/TestRunner.cpp build-test/BatteryTest.o
-		$(CPP) -o build-test/test test/TestRunner.cpp test/BatteryTest.cpp -lcppunit
+test: test/TestRunner.cpp build-test/CoordinatesTest.o
+		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o -lcppunit
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
 		$(CPP) -c test/BatteryTest.cpp -o build-test/BatteryTest.o -lcppunit
+
+build-test/CoordinatesTest.o: test/CoordinatesTest.cpp build/Coordinates.o
+		$(CPP) -c test/CoordinatesTest.cpp build/Coordinates.o -o build-test/CoordinatesTest.o -lcppunit
 
 clean:
 		rm -rf build/* build-test/* src/*.*~ src/*.*~
