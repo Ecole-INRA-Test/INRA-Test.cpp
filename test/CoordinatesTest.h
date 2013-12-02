@@ -9,12 +9,13 @@
 #define	COORDINATESTEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
+#include "../src/Coordinates.h"
 
 class CoordinatesTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(CoordinatesTest);
 
-    CPPUNIT_TEST(testXY);
-
+    CPPUNIT_TEST(testX);
+    CPPUNIT_TEST(testY);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -22,9 +23,11 @@ public:
     virtual ~CoordinatesTest();
     void setUp();
     void tearDown();
-
+    
 private:
-    void testXY();
+    Coordinates* c;
+    void testX();
+    void testY();
 };
 
 #endif	/* COORDINATESTEST_H */

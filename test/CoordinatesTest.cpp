@@ -6,7 +6,7 @@
  */
 
 #include "CoordinatesTest.h"
-#include "../src/Coordinates.h"
+
 
 CPPUNIT_TEST_SUITE_REGISTRATION(CoordinatesTest);
 
@@ -17,13 +17,16 @@ CoordinatesTest::~CoordinatesTest() {
 }
 
 void CoordinatesTest::setUp() {
+  c = new Coordinates(10,5);
 }
 
 void CoordinatesTest::tearDown() {
 }
 
-void CoordinatesTest::testXY() {
-    Coordinates* c = new Coordinates(10,5);
+void CoordinatesTest::testX() {
     CPPUNIT_ASSERT(c->getX() == 10);
+}
+
+void CoordinatesTest::testY() {
     CPPUNIT_ASSERT(c->getY() == 5);
 }
