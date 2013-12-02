@@ -4,8 +4,8 @@ default: main
 
 all: main test
 
-main: src/main.cpp build/Coordinates.o
-		$(CPP) -o build/main src/main.cpp build/Coordinates.o
+main: src/main.cpp build/Coordinates.o build/LandSensor.o
+		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o
 
 #main: main.cpp RoadBook.o MapTools.o Coordinates.o Battery.o LandSensor.o Direction.h Instruction.h
 #		$(CPP) -o main main.cpp MapTools.o Coordinates.o Battery.o LandSensor.o
@@ -28,33 +28,26 @@ main: src/main.cpp build/Coordinates.o
 build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
 		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o
 
-test: test/TestRunner.cpp build-test/CoordinatesTest.o
-		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o -lcppunit
+build/LandSensor.o: src/LandSensor.cpp src/LandSensor.h
+		$(CPP) -c src/LandSensor.cpp -o build/LandSensor.o
+
+test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/LandSensorTest.o
+		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o -lcppunit
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
 		$(CPP) -c test/BatteryTest.cpp -o build-test/BatteryTest.o -lcppunit
 
-build-test/CoordinatesTest.o: test/CoordinatesTest.cpp build/Coordinates.o
+build-test/LandSensorTest.o: test/LandSensorTest.cpp test/LandSensorTest.h build/LandSensor.o
+		$(CPP) -c test/LandSensorTest.cpp build/LandSensor.o -o build-test/LandSensorTest.o -lcppunit
+
+build-test/CoordinatesTest.o: test/CoordinatesTest.cpp test/CoordinatesTest.h build/Coordinates.o
 		$(CPP) -c test/CoordinatesTest.cpp build/Coordinates.o -o build-test/CoordinatesTest.o -lcppunit
 
 clean:
 		rm -rf build/* build-test/* src/*.*~ src/*.*~
 
-## build tests
-#build-tests: .build-tests-post
-#
-#.build-tests-pre:
-## Add your pre 'build-tests' code here...
-#
-#.build-tests-post: .build-tests-impl
-## Add your post 'build-tests' code here...
-#
-#
-## run tests
-#test: .test-post
-#
-#.test-pre:
-## Add your pre 'test' code here...
-#
-#.test-post: .test-impl
-## Add your post 'test' code here...
+run-test: test
+		./build-test/test
+
+run: main
+		./build/main

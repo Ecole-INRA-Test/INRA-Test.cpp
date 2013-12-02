@@ -7,7 +7,6 @@
 
 #include "Coordinates.h"
 
-int x,y;
 
 Coordinates::Coordinates(int xval, int yval) {
     x = xval;

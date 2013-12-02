@@ -15,7 +15,8 @@ public:
     int getX();
     int getY();
 private:
-
+    int x;
+    int y;
 };
 
 #endif	/* COORDINATES_H */
