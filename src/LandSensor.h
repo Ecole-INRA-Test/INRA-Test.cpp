@@ -10,7 +10,10 @@
 
 #include <math.h>
 #include <cstdlib>
+#include <map>
 #include "Coordinates.h"
+#include "Land.h"
+#include "Error.h"
 
 class LandSensor {
 public:
@@ -22,11 +25,11 @@ public:
         this.random = random;
     }*/
 
-    double getPointToPointEnergyCoefficient(Coordinates coordinate1, Coordinates coordinate2);
+    double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int);
 
-    double distance(Coordinates coordinate1, Coordinates coordinate2);
 private:
     //private Random random;
+    std::map<Coordinates*, Land::Lands> carte;
 };
 
 #endif	/* LANDSENSOR_H */

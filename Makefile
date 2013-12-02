@@ -4,8 +4,8 @@ default: main
 
 all: main test
 
-main: src/main.cpp build/Coordinates.o build/LandSensor.o
-		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o
+main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o
+		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o
 
 #main: main.cpp RoadBook.o MapTools.o Coordinates.o Battery.o LandSensor.o Direction.h Instruction.h
 #		$(CPP) -o main main.cpp MapTools.o Coordinates.o Battery.o LandSensor.o
@@ -29,7 +29,10 @@ build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
 		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o
 
 build/LandSensor.o: src/LandSensor.cpp src/LandSensor.h
-		$(CPP) -c src/LandSensor.cpp -o build/LandSensor.o
+		$(CPP) -c src/LandSensor.cpp -o build/LandSensor.o 
+
+build/Land.o: src/Land.cpp src/Land.h
+		$(CPP) -c src/Land.cpp -o build/Land.o
 
 test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/LandSensorTest.o
 		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o -lcppunit

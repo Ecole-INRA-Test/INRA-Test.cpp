@@ -9,6 +9,9 @@
 #define	ERROR_H
 
 const int ERROR_INSUFFICIENT_CHARGE = 1;
+const int ERROR_LAND_NOT_MANAGED = 2;
+const int ERROR_LANDSENSOR_FAIL = 3;
+const int ERROR_COORDINATES_INACCESSIBLE = 4;
 
 #endif	/* ERROR_H */
 

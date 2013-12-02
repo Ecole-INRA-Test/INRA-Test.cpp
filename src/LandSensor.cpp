@@ -14,15 +14,16 @@ LandSensor::LandSensor() {
 LandSensor::~LandSensor() {
 }
 
-double LandSensor::getPointToPointEnergyCoefficient(Coordinates coordinate1, Coordinates coordinate2) {
-        double dist;
-        double r;
-	dist = distance(coordinate1, coordinate2);
-        //return 1.0;
-	r = ((double) rand() / (RAND_MAX));
-        return 1 + dist / (dist * r);
-    }
+double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int){
+	if(carte.find(coordinate1) == carte.end()){
+		carte[coordinate1] = Land::getLandByOrdinal(0);
+	}
+	if(carte.find(coordinate2) == carte.end()){
+		carte[coordinate1] = Land::getLandByOrdinal(0);
+	}
+	Land::Lands terrain1 = carte.find(coordinate1)->second;
+	Land::Lands terrain2 = carte.find(coordinate2)->second;
 
-double LandSensor::distance(Coordinates coordinate1, Coordinates coordinate2) {
-        return sqrt(pow(coordinate1.getX() - coordinate2.getX(), 2) + pow(coordinate1.getY() - coordinate2.getY(),2));
+	double result = (terrain1 + terrain2) / 2.0;
+	return result;
     }

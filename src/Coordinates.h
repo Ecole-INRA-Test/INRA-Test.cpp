@@ -12,6 +12,10 @@ class Coordinates {
 public:
     Coordinates(int, int);
     ~Coordinates();
+    bool operator <(const Coordinates& rhs) const
+    {
+	return x < rhs.x;
+    }
     int getX();
     int getY();
 private:
