@@ -18,6 +18,7 @@ class LandSensorTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_2);
     CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_3);
     CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_4);
+    CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_INFRANCHISSABLE_1);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -36,6 +37,7 @@ private:
     void getPointToPointEnergyCoefficientTest_2();
     void getPointToPointEnergyCoefficientTest_3();
     void getPointToPointEnergyCoefficientTest_4();
+    void getPointToPointEnergyCoefficientTest_INFRANCHISSABLE_1();
 };
 
 #endif	/* LANDSENSORTEST_H */

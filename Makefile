@@ -22,7 +22,7 @@ build/MapTools.o: src/MapTools.h src/MapTools.cpp src/Direction.h build/Coordina
 build/RoadBook.o: src/RoadBook.h src/RoadBook.cpp src/Instruction.h
 		$(CPP) -c src/RoadBook.cpp -o build/RoadBook.o
 
-test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o buid/RoadBook.o
+test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o
 		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o -lcppunit
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
