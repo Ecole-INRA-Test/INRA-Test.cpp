@@ -25,7 +25,7 @@ public:
         this.random = random;
     }*/
 
-    double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int);
+    double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2, int seed=4) throw (int);
 
 private:
     //private Random random;

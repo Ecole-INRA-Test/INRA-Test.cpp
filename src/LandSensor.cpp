@@ -13,7 +13,8 @@ LandSensor::LandSensor() {
 LandSensor::~LandSensor() {
 }
 
-double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int){
+double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2, int seed) throw (int){
+	srand(seed);
 	if(carte.find(coordinate1) == carte.end()){
 		try{
 		carte[coordinate1] = Land::getLandByOrdinal(rand()%5);
