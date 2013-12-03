@@ -7,7 +7,6 @@
 
 #include "Land.h"
 
-
 Land::Lands Land::getLandByOrdinal(int ordinal) throw (int){
 	switch ( ordinal ) {
 	case 0:

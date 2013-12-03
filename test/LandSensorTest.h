@@ -15,7 +15,9 @@ class LandSensorTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(LandSensorTest);
 
     CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_1);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_2);
+    CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_3);
+    CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_4);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -28,9 +30,12 @@ public:
 private:
     Coordinates* c1;
     Coordinates* c2;
+    Coordinates* c3;
     LandSensor* l;
     void getPointToPointEnergyCoefficientTest_1();
-    void testFailedMethod();
+    void getPointToPointEnergyCoefficientTest_2();
+    void getPointToPointEnergyCoefficientTest_3();
+    void getPointToPointEnergyCoefficientTest_4();
 };
 
 #endif	/* LANDSENSORTEST_H */
