@@ -4,7 +4,6 @@
  * 
  * Created on 27 novembre 2013, 14:03
  */
-
 #include "LandSensor.h"
 
 LandSensor::LandSensor() {
@@ -19,7 +18,7 @@ double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Co
 		carte[coordinate1] = Land::getLandByOrdinal(0);
 	}
 	if(carte.find(coordinate2) == carte.end()){
-		carte[coordinate1] = Land::getLandByOrdinal(0);
+		carte[coordinate2] = Land::getLandByOrdinal(0);
 	}
 	Land::Lands terrain1 = carte.find(coordinate1)->second;
 	Land::Lands terrain2 = carte.find(coordinate2)->second;
