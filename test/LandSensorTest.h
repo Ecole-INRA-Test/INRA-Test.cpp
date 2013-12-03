@@ -9,11 +9,12 @@
 #define	LANDSENSORTEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
+#include "../src/LandSensor.h"
 
 class LandSensorTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(LandSensorTest);
 
-    CPPUNIT_TEST(testMethod);
+    CPPUNIT_TEST(getPointToPointEnergyCoefficientTest_1);
     CPPUNIT_TEST(testFailedMethod);
 
     CPPUNIT_TEST_SUITE_END();
@@ -25,7 +26,10 @@ public:
     void tearDown();
 
 private:
-    void testMethod();
+    Coordinates* c1;
+    Coordinates* c2;
+    LandSensor* l;
+    void getPointToPointEnergyCoefficientTest_1();
     void testFailedMethod();
 };
 
