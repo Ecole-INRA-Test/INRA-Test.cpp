@@ -16,13 +16,13 @@
 
 class RoadBook {
 public:
-    RoadBook(std::vector<Instruction> tmpinstructions);
+    RoadBook(std::vector<Instruction>* tmpinstructions);
     ~RoadBook();
     bool hasInstruction();
     Instruction next();
    
 private:
-    std::vector<Instruction> instructions;
+    std::vector<Instruction>* instructions;
 };
 
 #endif	/* ROADBOOK_H */
