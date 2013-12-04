@@ -29,12 +29,12 @@ void BatteryTest::getChargeLevelTest() {
   CPPUNIT_ASSERT(b->getChargeLevel() > 75.0);
   
   b = new Battery();
-  CPPUNIT_ASSERT_EQUAL((float)100.0, b->getChargeLevel());
+  CPPUNIT_ASSERT_EQUAL((double)100.0, b->getChargeLevel());
 }
 
 void BatteryTest::useTest(){
   b->use(25.0);
-  CPPUNIT_ASSERT_EQUAL((float)75.0, b->getChargeLevel());
+  CPPUNIT_ASSERT_EQUAL((double)75.0, b->getChargeLevel());
   CPPUNIT_ASSERT_THROW(b->use(80.0), int);
 }
 
