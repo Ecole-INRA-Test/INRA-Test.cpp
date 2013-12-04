@@ -9,11 +9,12 @@
 #define	BATTERYTEST_H
 
 #include <cppunit/extensions/HelperMacros.h>
+#include "../src/Battery.h"
 
 class BatteryTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(BatteryTest);
 
-    CPPUNIT_TEST(testMethod);
+    CPPUNIT_TEST(getChargeLevelTest);
     CPPUNIT_TEST(testFailedMethod);
 
     CPPUNIT_TEST_SUITE_END();
@@ -25,7 +26,8 @@ public:
     void tearDown();
 
 private:
-    void testMethod();
+    Battery* b;
+    void getChargeLevelTest();
     void testFailedMethod();
 };
 

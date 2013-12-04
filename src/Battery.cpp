@@ -26,8 +26,11 @@ float Battery::chargeFunction(float charge, double time) {
 
 void Battery::charge() {
 	std::time_t lastChargeClock = chargeClock;
+	float tmpCharge;
 	chargeClock = std::time(NULL);
-        chargeLevel = chargeFunction(chargeLevel, std::difftime(chargeClock, lastChargeClock));
+	tmpCharge = chargeFunction(chargeLevel, std::difftime(chargeClock, lastChargeClock));
+	if (tmpCharge < 100) chargeLevel = tmpCharge;
+	else chargeLevel = 100;
     }
 
 float Battery::getChargeLevel(){
