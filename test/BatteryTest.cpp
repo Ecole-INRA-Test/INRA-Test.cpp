@@ -6,7 +6,7 @@
  */
 
 #include "BatteryTest.h"
-
+ 
 CPPUNIT_TEST_SUITE_REGISTRATION(BatteryTest);
 
 BatteryTest::BatteryTest() {
@@ -23,11 +23,13 @@ void BatteryTest::tearDown() {
 }
 
 void BatteryTest::getChargeLevelTest() {
-   
   b->use(25.0);
-  std::cout << b->getChargeLevel() << std::endl;
-  
+  std::time_t temp = std::time(NULL);
+  while(std::difftime(std::time(NULL), temp) <= 1){}  
   CPPUNIT_ASSERT(b->getChargeLevel() > 75.0);
+
+  b = new Battery();
+  
 }
 
 void BatteryTest::testFailedMethod() {
