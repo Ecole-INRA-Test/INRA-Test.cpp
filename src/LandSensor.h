@@ -29,6 +29,7 @@ public:
 
 private:
     //private Random random;
+    Land::Lands lazyGet(Coordinates* coordinate1, int seed) throw (int);
     std::map<Coordinates*, Land::Lands> carte;
 };
 
