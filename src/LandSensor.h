@@ -27,9 +27,10 @@ public:
 
     double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2, int seed=4) throw (int);
 
+    bool isAccessible(Coordinates* coordinate) throw (int);
 private:
     //private Random random;
-    Land::Lands lazyGet(Coordinates* coordinate1, int seed) throw (int);
+    Land::Lands lazyGet(Coordinates* coordinate1, int seed=4) throw (int);
     std::map<Coordinates*, Land::Lands> carte;
 };
 

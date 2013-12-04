@@ -50,3 +50,8 @@ Land::Lands LandSensor::lazyGet(Coordinates* coordinate1, int seed) throw (int){
 	}
 	return carte.find(coordinate1)->second;
 }
+
+bool LandSensor::isAccessible(Coordinates* coordinate) throw (int){
+	Land::Lands terrain = lazyGet(coordinate);
+	return terrain != Land::INFRANCHISSABLE;
+}
