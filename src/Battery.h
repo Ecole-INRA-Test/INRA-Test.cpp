@@ -17,15 +17,15 @@ public:
     ~Battery();
     void setUp();
     void charge() ;
-    float getChargeLevel();
+    double getChargeLevel();
     void use(double energy) throw(int);
     bool canDeliver(double neededEnergy);
     static const long CHARGE_TOP = 1000;
     static const long CHARGE_STEP = 10;
 private:
-    float chargeLevel;
+    double chargeLevel;
     std::time_t chargeClock;
-    float chargeFunction(float charge, double time);
+    double chargeFunction(double charge, double time);
 };
 
 #endif	/* BATTERY_H */

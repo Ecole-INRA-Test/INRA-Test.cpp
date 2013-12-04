@@ -20,7 +20,7 @@ void Battery::setUp(){
 }
 
 
-float Battery::chargeFunction(float charge, double time) {
+double Battery::chargeFunction(double charge, double time) {
         return charge+CHARGE_STEP*time/CHARGE_TOP;
 }
 
@@ -33,7 +33,7 @@ void Battery::charge() {
 	else chargeLevel = 100;
     }
 
-float Battery::getChargeLevel(){
+double Battery::getChargeLevel(){
 	charge();
         return chargeLevel;
     }
