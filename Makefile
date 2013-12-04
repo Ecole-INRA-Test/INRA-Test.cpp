@@ -5,7 +5,7 @@ default: main
 all: main test
 
 main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o
-		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o
+		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o 
 
 build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
 		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o
@@ -71,7 +71,7 @@ build-test/BlackBoxTest.o: test/BlackBoxTest.cpp test/BlackBoxTest.h
 		$(CPP) -c test/BlackBoxTest.cpp -o build-test/BlackBoxTest.o -lcppunit
 
 clean:
-		rm -rf build/* build-test/* src/*.*~ src/*.*~
+		rm -rf build/* build-test/* src/*.*~ src/*.*~ *.gcov
 
 run-test: test
 		./build-test/test

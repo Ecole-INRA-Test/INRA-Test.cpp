@@ -6,7 +6,7 @@
  */
 
 #include "Coordinates.h"
-
+#include <iostream>
 
 Coordinates::Coordinates(int xval, int yval) {
     x = xval;
@@ -15,6 +15,18 @@ Coordinates::Coordinates(int xval, int yval) {
 
 Coordinates::~Coordinates() {
 }
+
+bool Coordinates::operator <(const Coordinates& rhs) const
+{
+	return x < rhs.x;
+}
+
+bool Coordinates::operator ==(const Coordinates& rhs) const
+{
+        if (x == rhs.x && y==rhs.y) return true;
+        return false;
+}
+
 
 int Coordinates::getX(){
     return x;

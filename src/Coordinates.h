@@ -12,16 +12,8 @@ class Coordinates {
 public:
     Coordinates(int, int);
     ~Coordinates();
-    bool operator <(const Coordinates& rhs) const
-    {
-	return x < rhs.x;
-    }
-    
-    bool operator ==(const Coordinates& rhs) const
-    {
-	if (x == rhs.x && y==rhs.y) return true;
-	return false;
-    }
+    bool operator <(const Coordinates& rhs) const;
+    bool operator ==(const Coordinates& rhs) const;
 
     int getX();
     int getY();
