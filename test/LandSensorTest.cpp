@@ -46,7 +46,3 @@ void LandSensorTest::getPointToPointEnergyCoefficientTest_4() {
   double r1 = l->getPointToPointEnergyCoefficient(c1, c2);
   CPPUNIT_ASSERT_EQUAL(r1, l->getPointToPointEnergyCoefficient(c1, c2));
 }
-
-void LandSensorTest::getPointToPointEnergyCoefficientTest_INFRANCHISSABLE_1() {
-  CPPUNIT_ASSERT_THROW(l->getPointToPointEnergyCoefficient(c3, c2), int);
-}
