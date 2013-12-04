@@ -27,12 +27,19 @@ void BatteryTest::getChargeLevelTest() {
   std::time_t temp = std::time(NULL);
   while(std::difftime(std::time(NULL), temp) <= 1){}  
   CPPUNIT_ASSERT(b->getChargeLevel() > 75.0);
-
-  b = new Battery();
   
+  b = new Battery();
+  CPPUNIT_ASSERT_EQUAL((float)100.0, b->getChargeLevel());
 }
 
-void BatteryTest::testFailedMethod() {
-    CPPUNIT_ASSERT(true);
+void BatteryTest::useTest(){
+  b->use(25.0);
+  CPPUNIT_ASSERT_EQUAL((float)75.0, b->getChargeLevel());
+  CPPUNIT_ASSERT_THROW(b->use(80.0), int);
 }
 
+void BatteryTest::canDeliverTest(){
+  b->use(25.0);
+  CPPUNIT_ASSERT(b->canDeliver(74.0));
+  CPPUNIT_ASSERT(!b->canDeliver(76.0));
+}

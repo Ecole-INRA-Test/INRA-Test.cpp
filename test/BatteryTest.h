@@ -15,7 +15,8 @@ class BatteryTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(BatteryTest);
 
     CPPUNIT_TEST(getChargeLevelTest);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(useTest);
+    CPPUNIT_TEST(canDeliverTest);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -28,7 +29,8 @@ public:
 private:
     Battery* b;
     void getChargeLevelTest();
-    void testFailedMethod();
+    void useTest();
+    void canDeliverTest();
 };
 
 #endif	/* BATTERYTEST_H */
