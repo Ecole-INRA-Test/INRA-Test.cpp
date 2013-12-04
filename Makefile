@@ -4,8 +4,8 @@ default: main
 
 all: main test
 
-main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o
-		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o
+main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o
+		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o
 
 build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
 		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o
@@ -30,6 +30,9 @@ build/Robot.o: src/Robot.h src/Robot.cpp src/Error.h src/Coordinates.h src/Direc
 
 build/Battery.o: src/Battery.h src/Battery.cpp src/Error.h
 		$(CPP) -c src/Battery.cpp -o build/Battery.o
+
+build/Direction.o: src/Direction.h src/Direction.cpp
+		$(CPP) -c src/Direction.cpp -o build/Direction.o
 
 test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o
 		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o -lcppunit

@@ -8,7 +8,16 @@
 #ifndef DIRECTION_H
 #define	DIRECTION_H
 
-enum Direction {NORTH, WEST, SOUTH, EAST};
+class Direction{
+public:
+typedef enum {
+	NORTH, 
+	WEST, 
+	SOUTH, 
+	EAST
+}Directions;
 
+static Directions oppositeDirection(Directions direction);
+};
 #endif	/* DIRECTION_H */
 

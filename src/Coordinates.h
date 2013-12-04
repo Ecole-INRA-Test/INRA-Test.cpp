@@ -16,6 +16,13 @@ public:
     {
 	return x < rhs.x;
     }
+    
+    bool operator ==(const Coordinates& rhs) const
+    {
+	if (x == rhs.x && y==rhs.y) return true;
+	return false;
+    }
+
     int getX();
     int getY();
 private:

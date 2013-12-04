@@ -15,13 +15,13 @@ class MapTools {
 public:
     MapTools();
     ~MapTools();
-static Coordinates* nextForwardPosition(Coordinates* position, Direction direction);
+static Coordinates* nextForwardPosition(Coordinates* position, Direction::Directions direction);
 
-static Coordinates* nextBackwardPosition(Coordinates* position, Direction direction);
+static Coordinates* nextBackwardPosition(Coordinates* position, Direction::Directions direction);
 
-static Direction counterclockwise(Direction direction);
+static Direction::Directions counterclockwise(Direction::Directions direction);
 
-static Direction clockwise(Direction direction);
+static Direction::Directions clockwise(Direction::Directions direction);
 
 private:
 };

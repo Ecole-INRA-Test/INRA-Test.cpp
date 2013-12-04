@@ -26,7 +26,7 @@ public:
     void land(Coordinates* landPosition, LandSensor* sensor);
     int getXposition() throw (int);
     int getYposition() throw (int);
-    Direction getDirection() throw (int);
+    Direction::Directions getDirection() throw (int);
     void moveForward() throw (int);
     void moveBackward() throw (int);
     void moveTo(Coordinates* nextPosition) throw (int);
@@ -37,7 +37,7 @@ public:
     void computeRoadTo(Coordinates* destination) throw (int);
 private:
     Coordinates* position;
-    Direction direction;
+    Direction::Directions direction;
     bool isLanded;
     RoadBook* roadBook = NULL;
     double energyConsumption;

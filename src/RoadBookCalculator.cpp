@@ -7,12 +7,12 @@
 
 #include "RoadBookCalculator.h"
 
-RoadBook* RoadBookCalculator::calculateRoadBook(Direction direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions){
-    	std::vector<Direction>* directionList = new std::vector<Direction>();
-        if (destination->getX() < position->getX()) directionList->push_back(WEST);
-        if (destination->getX() > position->getX()) directionList->push_back(EAST);
-        if (destination->getY() < position->getY()) directionList->push_back(SOUTH);
-        if (destination->getY() > position->getY()) directionList->push_back(NORTH);
+RoadBook* RoadBookCalculator::calculateRoadBook(Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions){
+    	std::vector<Direction::Directions>* directionList = new std::vector<Direction::Directions>();
+        if (destination->getX() < position->getX()) directionList->push_back(Direction::WEST);
+        if (destination->getX() > position->getX()) directionList->push_back(Direction::EAST);
+        if (destination->getY() < position->getY()) directionList->push_back(Direction::SOUTH);
+        if (destination->getY() > position->getY()) directionList->push_back(Direction::NORTH);
         if (directionList->empty()) return new RoadBook(instructions);
         if (std::find(directionList->begin(),directionList->end(), direction) != directionList->end()) {
             instructions->push_back(FORWARD);

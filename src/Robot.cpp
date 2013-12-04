@@ -17,7 +17,7 @@ Robot::~Robot() {
 
 void Robot::land(Coordinates* landPosition, LandSensor* sensor){
 	position = landPosition;
-	direction = NORTH;
+	direction = Direction::NORTH;
 	isLanded = true;
 	landSensor = sensor;
 	//cells.setUp();
@@ -30,7 +30,7 @@ int Robot::getYposition() throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
 	return position->getY();
 }
-Direction Robot::getDirection() throw (int){
+Direction::Directions Robot::getDirection() throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
 	return direction;
 }

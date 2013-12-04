@@ -7,36 +7,36 @@
 
 #include "MapTools.h"
 
-Coordinates* MapTools::nextForwardPosition(Coordinates* position, Direction direction) {
-        if (direction == NORTH)
+Coordinates* MapTools::nextForwardPosition(Coordinates* position, Direction::Directions direction) {
+        if (direction == Direction::NORTH)
             return new Coordinates(position->getX(), position->getY() + 1);
-        if (direction == SOUTH)
+        if (direction == Direction::SOUTH)
             return new Coordinates(position->getX(), position->getY() - 1);
-        if (direction == EAST)
+        if (direction == Direction::EAST)
             return new Coordinates(position->getX() + 1, position->getY());
         return new Coordinates(position->getX() - 1, position->getY());
     }
 
-Coordinates* MapTools::nextBackwardPosition(Coordinates* position, Direction direction) {
-        if (direction == NORTH)
+Coordinates* MapTools::nextBackwardPosition(Coordinates* position, Direction::Directions direction) {
+        if (direction == Direction::NORTH)
             return new Coordinates(position->getX(), position->getY() - 1);
-        if (direction == SOUTH)
+        if (direction == Direction::SOUTH)
             return new Coordinates(position->getX(), position->getY() + 1);
-        if (direction == EAST)
+        if (direction == Direction::EAST)
             return new Coordinates(position->getX() - 1, position->getY());
         return new Coordinates(position->getX() + 1, position->getY());
     }
 
- Direction MapTools::counterclockwise(Direction direction) {
-        if (direction == NORTH) return WEST;
-        if (direction == WEST) return SOUTH;
-        if (direction == SOUTH) return EAST;
-        return NORTH;
+Direction::Directions MapTools::counterclockwise(Direction::Directions direction) {
+        if (direction == Direction::NORTH) return Direction::WEST;
+        if (direction == Direction::WEST) return Direction::SOUTH;
+        if (direction == Direction::SOUTH) return Direction::EAST;
+        return Direction::NORTH;
     }
 
-Direction MapTools::clockwise(Direction direction) {
-        if (direction == NORTH) return EAST;
-        if (direction == EAST) return SOUTH;
-        if (direction == SOUTH) return WEST;
-        return NORTH;
+Direction::Directions MapTools::clockwise(Direction::Directions direction) {
+        if (direction == Direction::NORTH) return Direction::EAST;
+        if (direction == Direction::EAST) return Direction::SOUTH;
+        if (direction == Direction::SOUTH) return Direction::WEST;
+        return Direction::NORTH;
     }

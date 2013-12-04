@@ -14,10 +14,12 @@
 #include "Direction.h"
 #include "RoadBook.h"
 #include "MapTools.h"
+#include "LandSensor.h"
 
 class RoadBookCalculator {
 public:
-    static RoadBook* calculateRoadBook(Direction direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions);
+    static RoadBook* calculateRoadBook(Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions);
+    static RoadBook* calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions);
    
 private:
 };
