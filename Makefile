@@ -40,7 +40,7 @@ build/CheckPoint.o: src/CheckPoint.cpp src/CheckPoint.h
 build/BlackBox.o: src/BlackBox.cpp src/BlackBox.h
 		$(CPP) -c src/BlackBox.cpp -o build/BlackBox.o
 
-test: test/TestRunner.cpp build-test/BatteryTest.o build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build-test/LandTest.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o
+test: test/TestRunner.cpp build-test/BatteryTest.o build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build-test/LandTest.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o
 		$(CPP) -o build-test/test test/TestRunner.cpp build-test/BatteryTest.o build/Battery.o build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build-test/LandTest.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o build/Direction.o build/CheckPoint.o build/BlackBox.o -lcppunit
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
