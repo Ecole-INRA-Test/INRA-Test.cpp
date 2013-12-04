@@ -20,6 +20,8 @@ class MapToolsTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(nextBackwardPositionTest_SOUTH);
     CPPUNIT_TEST(nextBackwardPositionTest_EAST);
     CPPUNIT_TEST(nextBackwardPositionTest_WEST);
+    CPPUNIT_TEST(counterclockwiseTest_ALL);
+    CPPUNIT_TEST(clockwiseTest_ALL);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -39,6 +41,9 @@ private:
     void nextBackwardPositionTest_SOUTH();
     void nextBackwardPositionTest_EAST();
     void nextBackwardPositionTest_WEST();
+
+    void counterclockwiseTest_ALL();
+    void clockwiseTest_ALL();
 };
 
 #endif	/* MAPTOOLTESTS_H */

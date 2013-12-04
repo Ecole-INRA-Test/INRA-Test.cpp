@@ -32,7 +32,7 @@ build/Battery.o: src/Battery.h src/Battery.cpp src/Error.h
 		$(CPP) -c src/Battery.cpp -o build/Battery.o
 
 test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o
-		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.p build/Robot.o build-test/RobotTest.o -lcppunit
+		$(CPP) -o build-test/test test/TestRunner.cpp build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o -lcppunit
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
 		$(CPP) -c test/BatteryTest.cpp -o build-test/BatteryTest.o -lcppunit
@@ -50,7 +50,7 @@ build-test/RoadBookTest.o: test/RoadBookTest.cpp test/RoadBookTest.h src/Instruc
 		$(CPP) -c test/RoadBookTest.cpp -o build-test/RoadBookTest.o -lcppunit
 
 build-test/RoadBookCalculatorTest.o: test/RoadBookCalculatorTest.cpp test/RoadBookCalculatorTest.cpp 
-		$(CPP) -c test/RoadBookCalculatorTest.cpp -o build-test/RoadBookCalculator.o -lcppunit
+		$(CPP) -c test/RoadBookCalculatorTest.cpp -o build-test/RoadBookCalculatorTest.o -lcppunit
 
 build-test/RobotTest.o: test/RobotTest.cpp test/RobotTest.h src/Robot.h
 		$(CPP) -c test/RobotTest.cpp -o build-test/RobotTest.o -lcppunit
