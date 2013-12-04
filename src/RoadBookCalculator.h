@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <vector>
 #include "Instruction.h"
+#include "Error.h"
 #include "Direction.h"
 #include "RoadBook.h"
 #include "MapTools.h"
@@ -22,6 +23,7 @@ public:
     static RoadBook* calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions);
    
 private:
+    static int lastIndex(std::vector<Instruction>* v, Instruction elem, int pos=-1);
 };
 
 #endif	/* ROADBOOKCALCULATOR_H */

@@ -26,45 +26,45 @@ void MapToolsTest::tearDown() {
 
 void MapToolsTest::nextForwardPositionTest_ALL() {
   oracleCoordinates = new Coordinates(5, 6);
-  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, NORTH)->getY() == oracleCoordinates->getY()); //Test du cas NORTH
+  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::NORTH)->getY() == oracleCoordinates->getY()); //Test du cas Direction::NORTH
   oracleCoordinates = new Coordinates(5, 4);
-  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, SOUTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, SOUTH)->getY() == oracleCoordinates->getY()); //Test du cas SOUTH
+  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::SOUTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::SOUTH)->getY() == oracleCoordinates->getY()); //Test du cas Direction::SOUTH
   oracleCoordinates = new Coordinates(6, 5);
-  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, EAST)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, EAST)->getY() == oracleCoordinates->getY()); //Test du cas EAST
+  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::EAST)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::EAST)->getY() == oracleCoordinates->getY()); //Test du cas Direction::EAST
   oracleCoordinates = new Coordinates(4, 5);
-  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates,WEST)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, WEST)->getY() == oracleCoordinates->getY()); //Test du cas WEST
+  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates,Direction::WEST)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::WEST)->getY() == oracleCoordinates->getY()); //Test du cas Direction::WEST
 }
 
 void MapToolsTest::nextBackwardPositionTest_NORTH() {
   oracleCoordinates = new Coordinates(5, 4);
-  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, NORTH)->getY() == oracleCoordinates->getY());
+  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, Direction::NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, Direction::NORTH)->getY() == oracleCoordinates->getY());
 }
 
 void MapToolsTest::nextBackwardPositionTest_SOUTH() {
   oracleCoordinates = new Coordinates(5, 6);
-  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, SOUTH)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, SOUTH)->getY() == oracleCoordinates->getY());
+  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, Direction::SOUTH)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, Direction::SOUTH)->getY() == oracleCoordinates->getY());
 }
 
 void MapToolsTest::nextBackwardPositionTest_EAST() {
   oracleCoordinates = new Coordinates(4, 5);
-  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, EAST)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, EAST)->getY() == oracleCoordinates->getY());
+  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, Direction::EAST)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, Direction::EAST)->getY() == oracleCoordinates->getY());
 }
 
 void MapToolsTest::nextBackwardPositionTest_WEST() {
   oracleCoordinates = new Coordinates(6, 5);
-  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, WEST)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, WEST)->getY() == oracleCoordinates->getY());
+  CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, Direction::WEST)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, Direction::WEST)->getY() == oracleCoordinates->getY());
 }
 
 void MapToolsTest::counterclockwiseTest_ALL(){
-  CPPUNIT_ASSERT(MapTools::counterclockwise(NORTH) == WEST);
-  CPPUNIT_ASSERT(MapTools::counterclockwise(WEST) == SOUTH);
-  CPPUNIT_ASSERT(MapTools::counterclockwise(SOUTH) == EAST);
-  CPPUNIT_ASSERT(MapTools::counterclockwise(EAST) == NORTH);
+  CPPUNIT_ASSERT(MapTools::counterclockwise(Direction::NORTH) == Direction::WEST);
+  CPPUNIT_ASSERT(MapTools::counterclockwise(Direction::WEST) == Direction::SOUTH);
+  CPPUNIT_ASSERT(MapTools::counterclockwise(Direction::SOUTH) == Direction::EAST);
+  CPPUNIT_ASSERT(MapTools::counterclockwise(Direction::EAST) == Direction::NORTH);
 }
 
 void MapToolsTest::clockwiseTest_ALL(){
-  CPPUNIT_ASSERT(MapTools::clockwise(NORTH) == EAST);
-  CPPUNIT_ASSERT(MapTools::clockwise(EAST) == SOUTH);
-  CPPUNIT_ASSERT(MapTools::clockwise(SOUTH) == WEST);
-  CPPUNIT_ASSERT(MapTools::clockwise(WEST) == NORTH);
+  CPPUNIT_ASSERT(MapTools::clockwise(Direction::NORTH) == Direction::EAST);
+  CPPUNIT_ASSERT(MapTools::clockwise(Direction::EAST) == Direction::SOUTH);
+  CPPUNIT_ASSERT(MapTools::clockwise(Direction::SOUTH) == Direction::WEST);
+  CPPUNIT_ASSERT(MapTools::clockwise(Direction::WEST) == Direction::NORTH);
 }
