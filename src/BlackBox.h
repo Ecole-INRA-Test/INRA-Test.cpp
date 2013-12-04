@@ -17,7 +17,7 @@ class BlackBox {
 public:
     BlackBox();
     ~BlackBox();
-    void addCheckPoint(Coordinates* position, Direction direction, bool manualDirective);
+    void addCheckPoint(Coordinates* position, Direction::Directions direction, bool manualDirective);
     void addCheckPoint(CheckPoint* checkPoint);
     std::vector<CheckPoint*>* getCheckPointList();
 private:

@@ -13,14 +13,14 @@
 
 class CheckPoint {
 public:
-    CheckPoint(Coordinates* pos, Direction direct, bool manual);
+    CheckPoint(Coordinates* pos, Direction::Directions direct, bool manual);
     ~CheckPoint();
     Coordinates* getPosition();
-    Direction getDirection();
+    Direction::Directions getDirection();
     bool getManualDirective();
 private:
     Coordinates* position;
-    Direction direction;
+    Direction::Directions direction;
     bool manualDirective;
 };
 

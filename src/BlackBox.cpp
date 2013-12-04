@@ -15,7 +15,7 @@ BlackBox::BlackBox() {
 BlackBox::~BlackBox() {
 }
 
-void BlackBox::addCheckPoint(Coordinates* position, Direction direction, bool manualDirective){
+void BlackBox::addCheckPoint(Coordinates* position, Direction::Directions direction, bool manualDirective){
     checkPointList->push_back(new CheckPoint(position, direction, manualDirective));
 }
 void BlackBox::addCheckPoint(CheckPoint* checkPoint){

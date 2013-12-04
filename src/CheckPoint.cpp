@@ -8,7 +8,7 @@
 #include "CheckPoint.h"
 
 
-CheckPoint::CheckPoint(Coordinates* pos, Direction direct, bool manual) {
+CheckPoint::CheckPoint(Coordinates* pos, Direction::Directions direct, bool manual) {
     position = pos;
     direction = direct;
     manualDirective = manual;
@@ -20,7 +20,7 @@ CheckPoint::~CheckPoint() {
 Coordinates* CheckPoint::getPosition() {
     return position;
 }
-Direction CheckPoint::getDirection() {
+Direction::Directions CheckPoint::getDirection() {
     return direction;
 }
 bool CheckPoint::getManualDirective() {
