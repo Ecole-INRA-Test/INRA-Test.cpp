@@ -22,8 +22,8 @@ void LandTest::setUp() {
 void LandTest::tearDown() {
 }
 
-void LandTest::getLandByOrdinalTest_1() {
-   CPPUNIT_ASSERT(true);
+void LandTest::getLandByOrdinalTest() {
+  CPPUNIT_ASSERT_EQUAL(Land::TERRE, Land::getLandByOrdinal(0));
 }
 
 void LandTest::testFailedMethod() {

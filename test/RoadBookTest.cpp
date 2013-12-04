@@ -17,16 +17,26 @@ RoadBookTest::~RoadBookTest() {
 }
 
 void RoadBookTest::setUp() {
+  instrList = new std::vector<Instruction>();
 }
 
 void RoadBookTest::tearDown() {
 }
 
-void RoadBookTest::testMethod() {
-    CPPUNIT_ASSERT(true);
+void RoadBookTest::hasInstructionTest() {
+  r = new RoadBook(instrList);
+  CPPUNIT_ASSERT(!r->hasInstruction());
+
+  instrList->push_back(TURNLEFT);
+  r = new RoadBook(instrList);
+  CPPUNIT_ASSERT(r->hasInstruction());
+  
 }
 
-void RoadBookTest::testFailedMethod() {
-    CPPUNIT_ASSERT(true);
+void RoadBookTest::nextTest() {
+  instrList->push_back(TURNLEFT);
+  r = new RoadBook(instrList);
+
+  CPPUNIT_ASSERT_EQUAL(TURNLEFT, r->next());
 }
 
