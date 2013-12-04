@@ -14,9 +14,8 @@
 class BlackBoxTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(BlackBoxTest);
 
-    CPPUNIT_TEST(getChargeLevelTest);
-    CPPUNIT_TEST(useTest);
-    CPPUNIT_TEST(canDeliverTest);
+    CPPUNIT_TEST(addCheckPointTest_1);
+    CPPUNIT_TEST(addCheckPointTest_2);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -28,9 +27,8 @@ public:
 
 private:
     BlackBox* b;
-    void getChargeLevelTest();
-    void useTest();
-    void canDeliverTest();
+    void addCheckPointTest_1();
+    void addCheckPointTest_2();
 };
 
 #endif	/* BLACKBOXTEST_H */
