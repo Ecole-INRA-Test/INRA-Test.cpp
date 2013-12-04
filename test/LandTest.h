@@ -14,9 +14,9 @@
 class LandTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(LandTest);
 
-    CPPUNIT_TEST(getLandByOrdinalTest_1);
-    CPPUNIT_TEST(testFailedMethod);
-
+    CPPUNIT_TEST(getLandByOrdinalTest);
+    CPPUNIT_TEST(getLandByOrdinalTest_Exception);
+    CPPUNIT_TEST(countLandTest);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -26,9 +26,9 @@ public:
     void tearDown();
 
 private:
-    Land* l;
-    void getLandByOrdinalTest_1();
-    void testFailedMethod();
+    void getLandByOrdinalTest();
+    void getLandByOrdinalTest_Exception();
+    void countLandTest();
 };
 
 #endif	/* LANDTEST_H */

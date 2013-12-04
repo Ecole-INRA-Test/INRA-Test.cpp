@@ -6,6 +6,7 @@
  */
 
 #include "LandSensorTest.h"
+#include <iostream>
 
 CPPUNIT_TEST_SUITE_REGISTRATION(LandSensorTest);
 
@@ -26,7 +27,7 @@ void LandSensorTest::tearDown() {
 }
 
 void LandSensorTest::getPointToPointEnergyCoefficientTest_1() {
-  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c1, c2) == 2.5);
+  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c1, c2) == 2);
 }
 
 void LandSensorTest::getPointToPointEnergyCoefficientTest_2() {
@@ -38,14 +39,14 @@ void LandSensorTest::getPointToPointEnergyCoefficientTest_2() {
 void LandSensorTest::getPointToPointEnergyCoefficientTest_3() {
   double r1 = l->getPointToPointEnergyCoefficient(c1, c2);
   double r2 = l->getPointToPointEnergyCoefficient(c3, c2);
-  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c3, c2) == r2);
+  CPPUNIT_ASSERT_EQUAL(r2, l->getPointToPointEnergyCoefficient(c3, c2));
 }
 
 void LandSensorTest::getPointToPointEnergyCoefficientTest_4() {
   double r1 = l->getPointToPointEnergyCoefficient(c1, c2);
-  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c1, c2) == r1);
+  CPPUNIT_ASSERT_EQUAL(r1, l->getPointToPointEnergyCoefficient(c1, c2));
 }
 
 void LandSensorTest::getPointToPointEnergyCoefficientTest_INFRANCHISSABLE_1() {
-  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c3, c2) == 4);
+  CPPUNIT_ASSERT_THROW(l->getPointToPointEnergyCoefficient(c3, c2), int);
 }
