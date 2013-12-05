@@ -16,6 +16,7 @@
 #include "RoadBook.h"
 #include "MapTools.h"
 #include "LandSensor.h"
+#include "InstructionListTool.h"
 
 class RoadBookCalculator {
 public:

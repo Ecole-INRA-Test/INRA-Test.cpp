@@ -25,7 +25,7 @@ RoadBook* RoadBookCalculator::calculateRoadBook(Direction::Directions direction,
 
 RoadBook* RoadBookCalculator::calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions){
   if (position->operator==(*destination)) {
-    return new RoadBook(instructions);
+    return new RoadBook(InstructionListTool::compacte(instructions));
   }
   std::vector<Direction::Directions>* directionList = new std::vector<Direction::Directions>();
   if (destination->getX() < position->getX()) directionList->push_back(Direction::WEST);

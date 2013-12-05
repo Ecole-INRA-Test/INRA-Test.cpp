@@ -6,8 +6,8 @@ default: main
 
 all: main test
 
-main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o
-		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o 
+main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o
+		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o
 
 build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
 		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o $(COVERAGE)
@@ -42,7 +42,10 @@ build/CheckPoint.o: src/CheckPoint.cpp src/CheckPoint.h
 build/BlackBox.o: src/BlackBox.cpp src/BlackBox.h
 		$(CPP) -c src/BlackBox.cpp -o build/BlackBox.o $(COVERAGE)
 
-test: test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build-test/LandTest.o build/BlackBox.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o
+build/InstructionListTool.o: src/InstructionListTool.cpp src/InstructionListTool.h
+		$(CPP) -c src/InstructionListTool.cpp -o build/InstructionListTool.o $(COVERAGE)
+
+test: test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build-test/LandTest.o build/BlackBox.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o
 		$(CPP) -o build-test/test test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build/Battery.o build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build-test/LandTest.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o build/Direction.o build/CheckPoint.o build/BlackBox.o -lcppunit $(LCOV)
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h

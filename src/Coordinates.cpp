@@ -6,7 +6,6 @@
  */
 
 #include "Coordinates.h"
-#include <iostream>
 
 Coordinates::Coordinates(int xval, int yval) {
     x = xval;
