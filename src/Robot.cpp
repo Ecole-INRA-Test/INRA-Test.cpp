@@ -8,8 +8,11 @@
 #include "Robot.h"
 
 
-Robot::Robot() {
-	energyConsumption = 1.0;
+Robot::Robot(double energy, Battery* battery) {
+	isLanded = false;
+	energyConsumption = energy;
+	cells = battery;
+	blackbox = new BlackBox();	
 }
 
 Robot::~Robot() {
@@ -20,7 +23,8 @@ void Robot::land(Coordinates* landPosition, LandSensor* sensor){
 	direction = Direction::NORTH;
 	isLanded = true;
 	landSensor = sensor;
-	//cells.setUp();
+	cells->setUp();
+	blackbox->addCheckPoint(position, direction, true);
 }
 int Robot::getXposition() throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
@@ -45,30 +49,45 @@ void Robot::moveBackward() throw (int){
 void Robot::moveTo(Coordinates* nextPosition) throw (int){
 	double neededEnergy = 0;
 	neededEnergy = landSensor->getPointToPointEnergyCoefficient(position, nextPosition) * energyConsumption;
-	//if(!cells->canDeliver(neededEnergy)) throw ERROR_INSUFFICIENT_CHARGE;
-	//cells->use(neededEnergy);
+	if(!cells->canDeliver(neededEnergy)) throw ERROR_INSUFFICIENT_CHARGE;
+	cells->use(neededEnergy);
 	position = nextPosition;
+	blackbox->addCheckPoint(position, direction, true);
 }
 void Robot::turnLeft() throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
-	direction = MapTools::counterclockwise(direction);
+	//direction = MapTools::counterclockwise(direction);
+	turnTo(MapTools::counterclockwise(direction));
 }
 void Robot::turnRight() throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
-	direction = MapTools::clockwise(direction);
+	//direction = MapTools::clockwise(direction);
+	turnTo(MapTools::clockwise(direction));
+}
+void Robot::turnTo(Direction::Directions newDirection) throw (int){
+	if(!cells->canDeliver(energyConsumption)) throw ERROR_INSUFFICIENT_CHARGE;
+	cells->use(energyConsumption);
+	direction = newDirection;
+	blackbox->addCheckPoint(position, direction, true);
+
 }
 void Robot::setRoadBook(RoadBook* rb){
 	roadBook = rb;
 }
-void Robot::letsGo() throw (int){
+std::vector<CheckPoint*>* Robot::letsGo() throw (int){
 	if(roadBook == NULL) throw UNDEFINED_ROADBOOK_EXCEPTION;
+	std::vector<CheckPoint*>* mouchard = new std::vector<CheckPoint*> ();
 	while(roadBook->hasInstruction()){
 		Instruction nextInstruction = roadBook->next();
 		if (nextInstruction == FORWARD) moveForward();
 		else if (nextInstruction == BACKWARD) moveBackward();
 		else if (nextInstruction == TURNLEFT) turnLeft();
 		else if (nextInstruction == TURNRIGHT) turnRight();
+		CheckPoint* checkpoint = new CheckPoint(position, direction, true);
+		mouchard->push_back(checkpoint);
+		blackbox->addCheckPoint(checkpoint);
 	}
+	return mouchard;
 }
 void Robot::computeRoadTo(Coordinates* destination) throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;

@@ -6,14 +6,14 @@
  */
 #include "LandSensor.h"
 
-LandSensor::LandSensor() {
+LandSensor::LandSensor(int s) {
 }
 
 
 LandSensor::~LandSensor() {
 }
 
-double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2, int seed) throw (int){
+double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int){
 //	srand(seed);
 //	if(carte.find(coordinate1) == carte.end()){
 //		try{
@@ -31,15 +31,15 @@ double LandSensor::getPointToPointEnergyCoefficient(Coordinates* coordinate1, Co
 //	}
 //	Land::Lands terrain1 = carte.find(coordinate1)->second;
 //	Land::Lands terrain2 = carte.find(coordinate2)->second;
-	Land::Lands terrain1 = lazyGet(coordinate1, seed);
-	Land::Lands terrain2 = lazyGet(coordinate2, seed);
+	Land::Lands terrain1 = lazyGet(coordinate1);
+	Land::Lands terrain2 = lazyGet(coordinate2);
 	if (terrain1 == Land::INFRANCHISSABLE || terrain2 == Land::INFRANCHISSABLE)
 		throw ERROR_COORDINATES_INACCESSIBLE;
 	double result = (terrain1 + terrain2) / 2.0;
 	return result;
     }
 
-Land::Lands LandSensor::lazyGet(Coordinates* coordinate1, int seed) throw (int){
+Land::Lands LandSensor::lazyGet(Coordinates* coordinate1) throw (int){
 	srand(seed);
 	if(carte.find(coordinate1) == carte.end()){
 		try{

@@ -16,12 +16,14 @@
 #include "RoadBookCalculator.h"
 #include "LandSensor.h"
 #include "MapTools.h"
-//#include "Battery.h"
+#include "Battery.h"
+#include "BlackBox.h"
+#include "CheckPoint.h"
 
 class Robot {
 public:
-    Robot();
-    //Robot(double, Battery*);
+//    Robot();
+    Robot(double energy, Battery* batt);
     ~Robot();
     void land(Coordinates* landPosition, LandSensor* sensor);
     int getXposition() throw (int);
@@ -32,9 +34,11 @@ public:
     void moveTo(Coordinates* nextPosition) throw (int);
     void turnLeft() throw (int);
     void turnRight() throw (int);
+    void turnTo(Direction::Directions newDirection) throw (int);
     void setRoadBook(RoadBook* rb);
-    void letsGo() throw (int);
+    std::vector<CheckPoint*>* letsGo() throw (int);
     void computeRoadTo(Coordinates* destination) throw (int);
+    BlackBox* blackbox;
 private:
     Coordinates* position;
     Direction::Directions direction;
@@ -42,7 +46,7 @@ private:
     RoadBook* roadBook = NULL;
     double energyConsumption;
     LandSensor* landSensor;
-    //Battery* cells;
+    Battery* cells;
 };
 
 #endif	/* ROBOT_H */
