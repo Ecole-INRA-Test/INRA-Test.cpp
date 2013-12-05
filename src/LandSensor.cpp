@@ -7,6 +7,7 @@
 #include "LandSensor.h"
 
 LandSensor::LandSensor(int s) {
+   seed = s;
 }
 
 
