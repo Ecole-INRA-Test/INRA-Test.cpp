@@ -1,5 +1,7 @@
 CPP = g++
 
+COVERAGE = 
+LCOV = 
 default: main
 
 all: main test
@@ -8,40 +10,40 @@ main: src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/Map
 		$(CPP) -o build/main src/main.cpp build/Coordinates.o build/LandSensor.o build/Land.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Battery.o build/Direction.o build/CheckPoint.o build/BlackBox.o 
 
 build/Coordinates.o: src/Coordinates.cpp src/Coordinates.h
-		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o
+		$(CPP) -c src/Coordinates.cpp -o build/Coordinates.o $(COVERAGE)
 
 build/LandSensor.o: src/LandSensor.cpp src/LandSensor.h src/Error.h src/Coordinates.h src/Land.h
-		$(CPP) -c src/LandSensor.cpp -o build/LandSensor.o 
+		$(CPP) -c src/LandSensor.cpp -o build/LandSensor.o  $(COVERAGE)
 
 build/Land.o: src/Land.cpp src/Land.h src/Error.h
-		$(CPP) -c src/Land.cpp -o build/Land.o
+		$(CPP) -c src/Land.cpp -o build/Land.o $(COVERAGE)
 
 build/MapTools.o: src/MapTools.h src/MapTools.cpp src/Direction.h src/Coordinates.h
-		$(CPP) -c src/MapTools.cpp -o build/MapTools.o
+		$(CPP) -c src/MapTools.cpp -o build/MapTools.o $(COVERAGE)
 
 build/RoadBook.o: src/RoadBook.h src/RoadBook.cpp src/Instruction.h
-		$(CPP) -c src/RoadBook.cpp -o build/RoadBook.o
+		$(CPP) -c src/RoadBook.cpp -o build/RoadBook.o $(COVERAGE)
 
 build/RoadBookCalculator.o: src/RoadBookCalculator.cpp src/RoadBookCalculator.h src/Instruction.h src/Direction.h src/RoadBook.h src/MapTools.h
-		$(CPP) -c src/RoadBookCalculator.cpp -o build/RoadBookCalculator.o
+		$(CPP) -c src/RoadBookCalculator.cpp -o build/RoadBookCalculator.o $(COVERAGE)
 
 build/Robot.o: src/Robot.h src/Robot.cpp src/Error.h src/Coordinates.h src/Direction.h src/RoadBook.h src/LandSensor.h
-		$(CPP) -c src/Robot.cpp -o build/Robot.o
+		$(CPP) -c src/Robot.cpp -o build/Robot.o $(COVERAGE)
 
 build/Battery.o: src/Battery.h src/Battery.cpp src/Error.h
-		$(CPP) -c src/Battery.cpp -o build/Battery.o
+		$(CPP) -c src/Battery.cpp -o build/Battery.o $(COVERAGE)
 
 build/Direction.o: src/Direction.h src/Direction.cpp
-		$(CPP) -c src/Direction.cpp -o build/Direction.o
+		$(CPP) -c src/Direction.cpp -o build/Direction.o $(COVERAGE)
 
 build/CheckPoint.o: src/CheckPoint.cpp src/CheckPoint.h
-		$(CPP) -c src/CheckPoint.cpp -o build/CheckPoint.o
+		$(CPP) -c src/CheckPoint.cpp -o build/CheckPoint.o $(COVERAGE)
 
 build/BlackBox.o: src/BlackBox.cpp src/BlackBox.h
-		$(CPP) -c src/BlackBox.cpp -o build/BlackBox.o
+		$(CPP) -c src/BlackBox.cpp -o build/BlackBox.o $(COVERAGE)
 
 test: test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build-test/LandTest.o build/BlackBox.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o
-		$(CPP) -o build-test/test test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build/Battery.o build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build-test/LandTest.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o build/Direction.o build/CheckPoint.o build/BlackBox.o -lcppunit
+		$(CPP) -o build-test/test test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build/Battery.o build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build-test/LandTest.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o build/Direction.o build/CheckPoint.o build/BlackBox.o -lcppunit $(LCOV)
 
 build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
 		$(CPP) -c test/BatteryTest.cpp -o build-test/BatteryTest.o -lcppunit

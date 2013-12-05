@@ -91,5 +91,5 @@ std::vector<CheckPoint*>* Robot::letsGo() throw (int){
 }
 void Robot::computeRoadTo(Coordinates* destination) throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
-	setRoadBook(RoadBookCalculator::calculateRoadBook(direction, position, destination, new std::vector<Instruction> ()));
+	setRoadBook(RoadBookCalculator::calculateRoadBook(landSensor, direction, position, destination, new std::vector<Instruction> ()));
 }

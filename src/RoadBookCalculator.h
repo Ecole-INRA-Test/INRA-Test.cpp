@@ -24,6 +24,7 @@ public:
    
 private:
     static int lastIndex(std::vector<Instruction>* v, Instruction elem, int pos=-1);
+    static void eraseElement(std::vector<Direction::Directions>* v, Direction::Directions d);
 };
 
 #endif	/* ROADBOOKCALCULATOR_H */

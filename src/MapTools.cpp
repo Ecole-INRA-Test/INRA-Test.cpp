@@ -9,9 +9,9 @@
 
 Coordinates* MapTools::nextForwardPosition(Coordinates* position, Direction::Directions direction) {
         if (direction == Direction::NORTH)
-            return new Coordinates(position->getX(), position->getY() + 1);
-        if (direction == Direction::SOUTH)
             return new Coordinates(position->getX(), position->getY() - 1);
+        if (direction == Direction::SOUTH)
+            return new Coordinates(position->getX(), position->getY() + 1);
         if (direction == Direction::EAST)
             return new Coordinates(position->getX() + 1, position->getY());
         return new Coordinates(position->getX() - 1, position->getY());
@@ -19,9 +19,9 @@ Coordinates* MapTools::nextForwardPosition(Coordinates* position, Direction::Dir
 
 Coordinates* MapTools::nextBackwardPosition(Coordinates* position, Direction::Directions direction) {
         if (direction == Direction::NORTH)
-            return new Coordinates(position->getX(), position->getY() - 1);
-        if (direction == Direction::SOUTH)
             return new Coordinates(position->getX(), position->getY() + 1);
+        if (direction == Direction::SOUTH)
+            return new Coordinates(position->getX(), position->getY() - 1);
         if (direction == Direction::EAST)
             return new Coordinates(position->getX() - 1, position->getY());
         return new Coordinates(position->getX() + 1, position->getY());
