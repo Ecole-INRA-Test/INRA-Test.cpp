@@ -16,6 +16,7 @@ class CoordinatesTest : public CPPUNIT_NS::TestFixture {
 
     CPPUNIT_TEST(testX);
     CPPUNIT_TEST(testY);
+    CPPUNIT_TEST(testEquals);
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -28,6 +29,7 @@ private:
     Coordinates* c;
     void testX();
     void testY();
+    void testEquals();
 };
 
 #endif	/* COORDINATESTEST_H */

@@ -20,7 +20,7 @@ void LandSensorTest::setUp() {
   c1 = new Coordinates(0, 0);
   c2 = new Coordinates(0, 1);
   c3 = new Coordinates(1, 0);
-  l = new LandSensor();
+  l = new LandSensor(4);
 }
 
 void LandSensorTest::tearDown() {
