@@ -1,7 +1,7 @@
-#include <boost/test/unit_test.hpp>
+#include <gtest/gtest.h>
 #include <cucumber-cpp/defs.hpp>
 
-#include <Robot.h>
+#include "Robot.h"
 
 using cucumber::ScenarioScope;
 
@@ -11,7 +11,7 @@ struct RobotCtx {
   int y_result;
 };
 
-GIVEN("^I have land the robot in (X : (\\i+), Y : (\\i+)) on the planet$") {
+GIVEN("^I have land the robot in X : (\\d+), Y : (\\d+) on the planet$") {
     REGEX_PARAM(int, x);
     REGEX_PARAM(int, y);
     ScenarioScope<RobotCtx> context;
@@ -25,7 +25,7 @@ WHEN("^I press moveForward") {
     context->robot->moveForward();   
 }
 
-THEN("^the robot is in (X : (.*), Y : (.*))$") {
+THEN("^the robot is in X : (.*), Y : (.*)$") {
     REGEX_PARAM(int, expected_x);
     REGEX_PARAM(int, expected_y);
 
@@ -33,6 +33,6 @@ THEN("^the robot is in (X : (.*), Y : (.*))$") {
     context->x_result = context->robot->getXposition();
     context->y_result = context->robot->getYposition();
 
-    BOOST_CHECK_EQUAL(expected_x, context->x_result);
-    BOOST_CHECK_EQUAL(expected_y, context->y_result);
+    EXPECT_EQ(expected_x, context->x_result);
+    EXPECT_EQ(expected_y, context->y_result);
 }
