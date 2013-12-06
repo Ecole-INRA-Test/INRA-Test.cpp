@@ -5,7 +5,6 @@
  * Created on 27 novembre 2013, 14:03
  */
 #include "LandSensor.h"
-#include <iostream>
 LandSensor::LandSensor(int s) {
    seed = s;
    srand(seed);
@@ -37,7 +36,6 @@ Land::Lands LandSensor::lazyGet(Coordinates* coordinate1) throw (int){
 		}
 	}
 	if(!findCoordinate){
-		std::cout<< "dans le if" << std::endl;
 		try{
 		  //int val = rand()%5;
 		  Land::Lands land;
@@ -46,13 +44,11 @@ Land::Lands LandSensor::lazyGet(Coordinates* coordinate1) throw (int){
 		  }
 		  else land = Land::getLandByOrdinal(rand()%4);
 		  carte[tmpCoordinate] = land;
-		  std::cout << land << std::endl;
 		} catch(int e) {
 		throw ERROR_LANDSENSOR_FAIL;
 		}
 	}
 	Land::Lands landToSend = carte.find(tmpCoordinate)->second;
-	std::cout << "i:" << landToSend << std::endl;
 	return carte.find(tmpCoordinate)->second;
 }
 
@@ -163,7 +159,6 @@ std::vector<std::string>* LandSensor::displayCarte(){
 		}
 		//grille->push_back(ligne.str());
 		grille->push_back(text);
- 		//std::cout << j << ", " << i << ": " << text << std::endl;
 		//ligne.flush();
 	}
 	//ligne.flush();

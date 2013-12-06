@@ -6,7 +6,6 @@
  */
 
 #include "InstructionListTool.h"
-#include <iostream>
 
 
 std::vector<Instruction>* InstructionListTool::compacte(std::vector<Instruction>* instructions){
@@ -18,7 +17,6 @@ std::vector<Instruction>* InstructionListTool::compacte(std::vector<Instruction>
 		if(inst != TURNRIGHT){
 			if (cpt != 0) {
 				if (cpt == 3) {
-					std::cout << "ici" << std::endl;
 					copieCompacte->push_back(TURNLEFT);
 				}
 				else {
@@ -33,7 +31,6 @@ std::vector<Instruction>* InstructionListTool::compacte(std::vector<Instruction>
 		}
 		else{
 			cpt++;
-			std::cout << cpt << std::endl;
 		}
 		instructions->erase(instructions->begin());
 	}
