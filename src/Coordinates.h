@@ -7,7 +7,8 @@
 
 #ifndef COORDINATES_H
 #define	COORDINATES_H
-
+#include <string>
+#include <sstream>
 class Coordinates {
 public:
     Coordinates(int, int);
@@ -17,6 +18,7 @@ public:
 
     int getX();
     int getY();
+    std::string toString();
 private:
     int x;
     int y;

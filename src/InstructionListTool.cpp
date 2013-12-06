@@ -39,3 +39,15 @@ std::vector<Instruction>* InstructionListTool::compacte(std::vector<Instruction>
 	}
         return copieCompacte;
 }
+
+std::vector<Instruction>* InstructionListTool::concateneInstruction(std::vector<Instruction>* vect, Instruction elem){
+	std::vector<Instruction>* instructions = new std::vector<Instruction> (vect->begin(), vect->end());
+	instructions->push_back(elem);
+	return instructions;
+}
+std::vector<Coordinates*>* InstructionListTool::concateneCoordinates(std::vector<Coordinates*>* vect, Coordinates* elem){
+	std::vector<Coordinates*>* coordinates = new std::vector<Coordinates*> (vect->begin(), vect->end());
+	coordinates->push_back(elem);
+	return coordinates;
+
+}

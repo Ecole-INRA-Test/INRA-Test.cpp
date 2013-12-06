@@ -11,6 +11,9 @@
 #include <math.h>
 #include <cstdlib>
 #include <map>
+#include <vector>
+#include <string>
+#include <sstream>
 #include "Coordinates.h"
 #include "Land.h"
 #include "Error.h"
@@ -28,11 +31,21 @@ public:
     double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int);
 
     bool isAccessible(Coordinates* coordinate) throw (int);
+
+    void cartographier(Coordinates* landPosition) throw (int);
+
+    Coordinates* getTop();
+    int getXBottom();
+
+    std::vector<std::string>* displayCarte();
 private:
     //private Random random;
     Land::Lands lazyGet(Coordinates* coordinate1) throw (int);
     std::map<Coordinates*, Land::Lands> carte;
     int seed;
+    int PORTEE;
+    Coordinates* boxTop;
+    Coordinates* boxBottom;
 };
 
 #endif	/* LANDSENSOR_H */

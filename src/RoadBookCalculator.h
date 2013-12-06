@@ -21,7 +21,7 @@
 class RoadBookCalculator {
 public:
     static RoadBook* calculateRoadBook(Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions);
-    static RoadBook* calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions);
+    static RoadBook* calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions, std::vector<Coordinates*>* trace);
    
 private:
     static int lastIndex(std::vector<Instruction>* v, Instruction elem, int pos=-1);

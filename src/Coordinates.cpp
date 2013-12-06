@@ -34,3 +34,10 @@ int Coordinates::getX(){
 int Coordinates::getY(){
     return y;
 }
+
+std::string Coordinates::toString()
+{
+	std::stringstream ss;
+	ss << "(" << x << ", " << y << ")";
+	return ss.str();
+}

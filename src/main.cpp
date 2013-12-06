@@ -56,6 +56,11 @@ static void displayBlackBox(BlackBox* blackbox){
   }
 }
 
+static void displayCarte(vector<string>* carte){
+  for(vector<string>::iterator it=carte->begin(); it != carte->end(); ++it){
+    cout << *it << endl;
+  }
+}
 
 static void displayMenu(){
   cout << "Panneau de commandes" << endl;
@@ -64,6 +69,7 @@ static void displayMenu(){
   cout << "Q : tourner a gauche" << endl;
   cout << "D : tourner a droite" << endl;
   cout << "S : reculer" << endl;
+  cout << "L : cartographier autour du robot" << endl;
   cout << "M : donner une coordonnee a atteindre" << endl;
   cout << "X : quitter" << endl;
   cout << "Saisir la commande" << endl;
@@ -95,7 +101,7 @@ static void displayException(int e){
 }
 
 int main(int argc, char** argv) {
-  cout << "Consommation de base du robot d'exploration" << endl;
+  cout << "Consommation de base du robot d'exploration" <<endl;
   double energy;
   cin >> energy;
   int x,y;
@@ -146,6 +152,14 @@ int main(int argc, char** argv) {
       try {
 	robot->moveBackward();
 	displayPosition(robot);
+      } catch(int e) {
+	displayException(e);
+      }
+      break;
+    case 'L':
+      try {
+	robot->cartographier();
+        displayCarte(robot->displayCarte());
       } catch(int e) {
 	displayException(e);
       }

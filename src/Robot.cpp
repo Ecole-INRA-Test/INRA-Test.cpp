@@ -18,12 +18,13 @@ Robot::Robot(double energy, Battery* battery) {
 Robot::~Robot() {
 }
 
-void Robot::land(Coordinates* landPosition, LandSensor* sensor){
+void Robot::land(Coordinates* landPosition, LandSensor* sensor) throw (int){
 	position = landPosition;
 	direction = Direction::NORTH;
 	isLanded = true;
 	landSensor = sensor;
 	cells->setUp();
+	sensor->cartographier(landPosition);
 	blackbox->addCheckPoint(position, direction, true);
 }
 int Robot::getXposition() throw (int){
@@ -83,7 +84,7 @@ std::vector<CheckPoint*>* Robot::letsGo() throw (int){
 		else if (nextInstruction == BACKWARD) moveBackward();
 		else if (nextInstruction == TURNLEFT) turnLeft();
 		else if (nextInstruction == TURNRIGHT) turnRight();
-		CheckPoint* checkpoint = new CheckPoint(position, direction, true);
+		CheckPoint* checkpoint = new CheckPoint(position, direction, false);
 		mouchard->push_back(checkpoint);
 		blackbox->addCheckPoint(checkpoint);
 	}
@@ -91,5 +92,56 @@ std::vector<CheckPoint*>* Robot::letsGo() throw (int){
 }
 void Robot::computeRoadTo(Coordinates* destination) throw (int){
 	if(!isLanded) throw UNLANDED_ROBOT;
-	setRoadBook(RoadBookCalculator::calculateRoadBook(landSensor, direction, position, destination, new std::vector<Instruction> ()));
+	setRoadBook(RoadBookCalculator::calculateRoadBook(landSensor, direction, position, destination, new std::vector<Instruction> (), new std::vector<Coordinates*> ()));
+}
+
+void Robot::cartographier() throw (int){
+	if(!isLanded) throw UNLANDED_ROBOT;
+	landSensor->cartographier(position);
+}
+
+std::vector<std::string>* Robot::displayCarte(){
+	std::vector<std::string>* carteEncadre = new std::vector<std::string>();
+	std::vector<std::string>* carte = landSensor->displayCarte();
+	Coordinates* top = landSensor->getTop();
+	std::stringstream positionColonne;
+	positionColonne << "\t" << "\t";
+	std::string text;
+	//positionColonne << " " << " ";
+	text = "\t\t";
+	for(int i = top->getX() ; i < position->getX() ; i++){
+		text = text + "\t"  ;
+		//positionColonne << "\t" << i ;
+		//positionColonne << " " << i ;
+	}	
+	text = text + "\t" + "\u25BC";
+	//positionColonne << "\t" << "\u25BC";
+	//positionColonne << " " << "\u25BC";
+	for (int i = position->getX() + 1 ; i <= landSensor->getXBottom() ; i++){
+		text = text + "\t" ; 
+		//positionColonne << "\t" << i;
+		//positionColonne << " " << i;
+	}
+	carteEncadre->push_back(carte->at(0));
+	//carteEncadre->push_back(positionColonne.str());
+	carteEncadre->push_back(text);
+	for (int i = 1 ; i < carte->size(); i++) {
+		if (top->getY() - 1 + i == position->getY()){
+			positionColonne.flush();
+			text = "\u25B6\t" + carte->at(i);
+			//positionColonne << "\u25B6\t" << carte->at(i);
+			//positionColonne << "\u25B6" << carte->at(i);
+			//carteEncadre->push_back(positionColonne.str());
+			carteEncadre->push_back(text);
+		}
+		else {
+			positionColonne.flush();
+			text =  "\t" + carte->at(i);
+			//positionColonne << "\t" << carte->at(i);
+			//positionColonne << " " << carte->at(i);
+			//carteEncadre->push_back(positionColonne.str());
+			carteEncadre->push_back(text);
+		}
+	}
+	return carteEncadre;
 }

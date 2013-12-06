@@ -9,6 +9,10 @@
 #define	ROBOT_H
 
 #include <vector>
+#include <string>
+#include <sstream>
+#include <iomanip>
+#include <iostream>
 #include "Error.h"
 #include "Coordinates.h"
 #include "Direction.h"
@@ -25,7 +29,7 @@ public:
 //    Robot();
     Robot(double energy, Battery* batt);
     ~Robot();
-    void land(Coordinates* landPosition, LandSensor* sensor);
+    void land(Coordinates* landPosition, LandSensor* sensor) throw(int);
     int getXposition() throw (int);
     int getYposition() throw (int);
     Direction::Directions getDirection() throw (int);
@@ -38,6 +42,8 @@ public:
     void setRoadBook(RoadBook* rb);
     std::vector<CheckPoint*>* letsGo() throw (int);
     void computeRoadTo(Coordinates* destination) throw (int);
+    void cartographier() throw (int);
+    std::vector<std::string>* displayCarte();
     BlackBox* blackbox;
 private:
     Coordinates* position;

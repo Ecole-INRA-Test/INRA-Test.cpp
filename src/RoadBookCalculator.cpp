@@ -23,7 +23,7 @@ RoadBook* RoadBookCalculator::calculateRoadBook(Direction::Directions direction,
   }
 }
 
-RoadBook* RoadBookCalculator::calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions){
+RoadBook* RoadBookCalculator::calculateRoadBook(LandSensor* sensor, Direction::Directions direction, Coordinates* position, Coordinates* destination, std::vector<Instruction>* instructions, std::vector<Coordinates*>* trace){
   if (position->operator==(*destination)) {
     return new RoadBook(InstructionListTool::compacte(instructions));
   }
@@ -42,18 +42,18 @@ RoadBook* RoadBookCalculator::calculateRoadBook(LandSensor* sensor, Direction::D
   eraseElement(directionsToExplore, Direction::oppositeDirection(direction));
   eraseElement(directionList, Direction::oppositeDirection(direction));
   while (!directionsToExplore->empty()) {
-    if((std::find(directionList->begin(), directionList->end(), direction) != directionList->end()) && sensor->isAccessible(MapTools::nextForwardPosition(position, direction))) {
+    if((std::find(directionList->begin(), directionList->end(), direction) != directionList->end()) && sensor->isAccessible(MapTools::nextForwardPosition(position, direction)) && (std::find(trace->begin(), trace->end(), MapTools::nextForwardPosition(position, direction)) == trace->end())) {
       try {
-	//directionsToExplore->erase(directionsToExplore->begin() + (std::find(directionsToExplore->begin(), directionsToExplore->end(),direction) - directionsToExplore->begin()));
 	eraseElement(directionsToExplore, direction);
 	eraseElement(directionList, direction);
-	//directionList->erase(directionList->begin() + (std::find(directionList->begin(), directionList->end(),direction) - directionList->begin()));
-	instructions->push_back(FORWARD);
-	return calculateRoadBook(sensor, direction, MapTools::nextForwardPosition(position, direction), destination, instructions);
+	//instructions->push_back(FORWARD);
+	//return calculateRoadBook(sensor, direction, MapTools::nextForwardPosition(position, direction), destination, instructions);
+	Coordinates* nextPos = MapTools::nextForwardPosition(position, direction);
+	return calculateRoadBook(sensor, direction, nextPos, destination, InstructionListTool::concateneInstruction(instructions, FORWARD), InstructionListTool::concateneCoordinates(trace, nextPos));
       } catch (int e) {
-	int last = lastIndex(instructions, FORWARD);
-	for (int i= (instructions->size() - 1); i>= last; i--)
-	  instructions->erase(instructions->begin() + i);
+//	int last = lastIndex(instructions, FORWARD);
+//	for (int i= (instructions->size() - 1); i>= last; i--)
+//	  instructions->erase(instructions->begin() + i);
       }
     }
     else if(std::find(directionList->begin(), directionList->end(), direction) != directionList->end()) {
@@ -68,16 +68,19 @@ RoadBook* RoadBookCalculator::calculateRoadBook(LandSensor* sensor, Direction::D
       instructions->push_back(TURNRIGHT);
       direction = MapTools::clockwise(direction);
     }
-    else if(directionList->empty() && (std::find(directionsToExplore->begin(), directionsToExplore->end(), direction) != directionsToExplore->end()) && sensor->isAccessible(MapTools::nextForwardPosition(position, direction))) {
+    else if(directionList->empty() && (std::find(directionsToExplore->begin(), directionsToExplore->end(), direction) != directionsToExplore->end()) && sensor->isAccessible(MapTools::nextForwardPosition(position, direction)) && (std::find(trace->begin(), trace->end(), MapTools::nextForwardPosition(position, direction)) == trace->end())) 
+ {
       try {
 	eraseElement(directionsToExplore, direction);
 	//directionsToExplore->erase(directionsToExplore->begin() + (std::find(directionsToExplore->begin(), directionsToExplore->end(),direction) - directionsToExplore->begin()));
-	instructions->push_back(FORWARD);
-	return calculateRoadBook(sensor, direction, MapTools::nextForwardPosition(position, direction), destination, instructions);
+//	instructions->push_back(FORWARD);
+//	return calculateRoadBook(sensor, direction, MapTools::nextForwardPosition(position, direction), destination, instructions);
+	Coordinates* nextPos = MapTools::nextForwardPosition(position, direction);
+	return calculateRoadBook(sensor, direction, nextPos, destination, InstructionListTool::concateneInstruction(instructions, FORWARD), InstructionListTool::concateneCoordinates(trace, nextPos));
       } catch (int e) {
-	int last = lastIndex(instructions, FORWARD);
-	for (int i= (instructions->size() - 1); i>= last; i--)
-	  instructions->erase(instructions->begin() + i);
+//	int last = lastIndex(instructions, FORWARD);
+//	for (int i= (instructions->size() - 1); i>= last; i--)
+//	  instructions->erase(instructions->begin() + i);
       }
     }
     else if(directionList->empty() && (std::find(directionsToExplore->begin(), directionsToExplore->end(), direction) != directionsToExplore->end())) {
