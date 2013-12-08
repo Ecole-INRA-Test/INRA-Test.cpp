@@ -54,8 +54,16 @@ Land::Lands LandSensor::lazyGet(Coordinates* coordinate1) throw (int){
 
 bool LandSensor::isAccessible(Coordinates* coordinate) throw (int){
 	//Land::Lands terrain = lazyGet(coordinate);
-        if(carte.find(coordinate) != carte.end()){
-		return carte[coordinate] != Land::INFRANCHISSABLE;
+	bool findCoordinate = false;
+	Coordinates* tmpCoordinate = coordinate;
+	for(std::map<Coordinates*, Land::Lands>::iterator it = carte.begin(); it!=carte.end(); ++it){
+		if(it->first->operator==(*coordinate)) {
+			findCoordinate = true;
+			tmpCoordinate = it->first;
+		}
+	}
+        if(findCoordinate){
+		return carte[tmpCoordinate] != Land::INFRANCHISSABLE;
 	}
 	return false;
 }

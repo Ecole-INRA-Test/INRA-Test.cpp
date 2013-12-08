@@ -11,8 +11,12 @@
 #include <cppunit/TestResult.h>
 #include <cppunit/TestResultCollector.h>
 #include <cppunit/TestRunner.h>
+#include "gmock/gmock.h"
 
-int main() {
+int main(int argc, char** argv) {
+    testing::GTEST_FLAG(throw_on_failure) = true;
+    testing::InitGoogleMock(&argc, argv);
+
     // Create the event manager and test controller
     CPPUNIT_NS::TestResult controller;
 
