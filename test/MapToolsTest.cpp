@@ -25,9 +25,9 @@ void MapToolsTest::tearDown() {
 
 
 void MapToolsTest::nextForwardPositionTest_ALL() {
-  oracleCoordinates = new Coordinates(5, 6);
-  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::NORTH)->getY() == oracleCoordinates->getY()); //Test du cas Direction::NORTH
   oracleCoordinates = new Coordinates(5, 4);
+  CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::NORTH)->getY() == oracleCoordinates->getY()); //Test du cas Direction::NORTH
+  oracleCoordinates = new Coordinates(5, 6);
   CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::SOUTH)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::SOUTH)->getY() == oracleCoordinates->getY()); //Test du cas Direction::SOUTH
   oracleCoordinates = new Coordinates(6, 5);
   CPPUNIT_ASSERT(MapTools::nextForwardPosition(robotCoordinates, Direction::EAST)->getX() == oracleCoordinates->getX() and MapTools::nextForwardPosition(robotCoordinates, Direction::EAST)->getY() == oracleCoordinates->getY()); //Test du cas Direction::EAST
@@ -36,12 +36,12 @@ void MapToolsTest::nextForwardPositionTest_ALL() {
 }
 
 void MapToolsTest::nextBackwardPositionTest_NORTH() {
-  oracleCoordinates = new Coordinates(5, 4);
+  oracleCoordinates = new Coordinates(5, 6);
   CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, Direction::NORTH)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, Direction::NORTH)->getY() == oracleCoordinates->getY());
 }
 
 void MapToolsTest::nextBackwardPositionTest_SOUTH() {
-  oracleCoordinates = new Coordinates(5, 6);
+  oracleCoordinates = new Coordinates(5, 4);
   CPPUNIT_ASSERT(MapTools::nextBackwardPosition(robotCoordinates, Direction::SOUTH)->getX() == oracleCoordinates->getX() and MapTools::nextBackwardPosition(robotCoordinates, Direction::SOUTH)->getY() == oracleCoordinates->getY());
 }
 

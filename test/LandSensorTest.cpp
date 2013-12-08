@@ -27,7 +27,8 @@ void LandSensorTest::tearDown() {
 }
 
 void LandSensorTest::getPointToPointEnergyCoefficientTest_1() {
-  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c1, c2) == 2);
+  std::cout << l->getPointToPointEnergyCoefficient(c1, c2) << std::endl;
+  CPPUNIT_ASSERT(l->getPointToPointEnergyCoefficient(c1, c2) == 3.5);
 }
 
 void LandSensorTest::getPointToPointEnergyCoefficientTest_2() {
