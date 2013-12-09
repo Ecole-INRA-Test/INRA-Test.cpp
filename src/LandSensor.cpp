@@ -42,7 +42,8 @@ Land::Lands LandSensor::lazyGet(Coordinates* coordinate1) throw (int){
                   if (rand()%10 == 0) {
 			land = Land::INFRANCHISSABLE;
 		  }
-		  else land = Land::getLandByOrdinal(rand()%4);
+		  else 
+	 	  land = Land::getLandByOrdinal(rand()%4);
 		  carte[tmpCoordinate] = land;
 		} catch(int e) {
 		throw ERROR_LANDSENSOR_FAIL;

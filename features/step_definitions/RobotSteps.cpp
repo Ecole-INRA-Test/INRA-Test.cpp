@@ -25,6 +25,24 @@ WHEN("^I press moveForward") {
     context->robot->moveForward();   
 }
 
+WHEN("^I press moveBackward") {
+    ScenarioScope<RobotCtx> context;
+
+    context->robot->moveBackward();   
+}
+WHEN("^I press turnLeft") {
+    ScenarioScope<RobotCtx> context;
+
+    context->robot->turnLeft();   
+}
+WHEN("^I press turnRight") {
+    ScenarioScope<RobotCtx> context;
+
+    context->robot->turnRight();   
+}
+
+
+
 THEN("^the robot is in X : (.*), Y : (.*)$") {
     REGEX_PARAM(int, expected_x);
     REGEX_PARAM(int, expected_y);
