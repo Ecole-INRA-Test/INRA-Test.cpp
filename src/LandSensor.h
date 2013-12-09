@@ -21,7 +21,7 @@
 class LandSensor {
 public:
     LandSensor(int s=4);
-    ~LandSensor();
+    virtual ~LandSensor();
     
 
     /*LandSensor(Random random) {
@@ -30,7 +30,7 @@ public:
 
     double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int);
 
-    bool isAccessible(Coordinates* coordinate) throw (int);
+    virtual bool isAccessible(Coordinates* coordinate) throw (int);
 
     void cartographier(Coordinates* landPosition) throw (int);
 

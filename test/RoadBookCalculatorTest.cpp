@@ -6,7 +6,9 @@
  */
 
 #include "RoadBookCalculatorTest.h"
-
+#include <iostream>
+using ::testing::Return;
+using ::testing::_;
 
 CPPUNIT_TEST_SUITE_REGISTRATION( RoadBookCalculatorTest);
 
@@ -23,7 +25,17 @@ void RoadBookCalculatorTest::tearDown() {
 }
 
 void RoadBookCalculatorTest::testMethod() {
+    mls = new MockLandSensor();
+    Coordinates* c5 = new Coordinates(0,0);
+    Coordinates* c9 = new Coordinates(-1,1);
+    mls->DelegateToFake();
+//    EXPECT_CALL(*mls, mockIsAccessible(_)).Times(3);
+    RoadBook* rb = RoadBookCalculator::calculateRoadBook(mls, Direction::NORTH, c5, c9, new std::vector<Instruction> (), new std::vector<Coordinates*>());
+    while(rb->hasInstruction()){
+	std::cout << rb->next() << std::endl;
+    }
     CPPUNIT_ASSERT(true);
+    delete(mls);
 }
 
 void RoadBookCalculatorTest::testFailedMethod() {
