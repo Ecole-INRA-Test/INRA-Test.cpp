@@ -45,17 +45,8 @@ build/BlackBox.o: src/BlackBox.cpp src/BlackBox.h
 build/InstructionListTool.o: src/InstructionListTool.cpp src/InstructionListTool.h
 		$(CPP) -c src/InstructionListTool.cpp -o build/InstructionListTool.o $(COVERAGE)
 
-test: test/TestRunner.cpp build-test/BlackBoxTest.o build-test/BatteryTest.o build-test/CoordinatesTest.o build-test/LandSensorTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/RoadBookCalculatorTest.o build-test/RobotTest.o build-test/LandTest.o build/BlackBox.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o build-test/FakeLandSensor.o
-		$(CPP) -I/home/pepi2013/gmock-1.7.0/include/ test/TestRunner.cpp build-test/FakeLandSensor.o build-test/BlackBoxTest.o build-test/BatteryTest.o build/Battery.o build-test/CoordinatesTest.o build/Coordinates.o build-test/LandSensorTest.o build/LandSensor.o build-test/LandTest.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build-test/RoadBookCalculatorTest.o build/Robot.o build-test/RobotTest.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o -L/home/pepi2013/gmock-1.7.0/build -lgmock -lpthread -lcppunit $(LCOV) -o build-test/test
-
-build-test/FakeLandSensor.o: test/FakeLandSensor.cpp test/FakeLandSensor.h
-		$(CPP) -c test/FakeLandSensor.cpp -o build-test/FakeLandSensor.o
-
-build-test/BatteryTest.o: test/BatteryTest.cpp test/BatteryTest.h
-		$(CPP) -c test/BatteryTest.cpp -o build-test/BatteryTest.o -lcppunit
-
-build-test/LandSensorTest.o: test/LandSensorTest.cpp test/LandSensorTest.h src/LandSensor.h 
-		$(CPP) -c test/LandSensorTest.cpp -o build-test/LandSensorTest.o -lcppunit
+test: test/TestRunner.cpp build-test/CoordinatesTest.o build-test/MapToolsTest.o build-test/RoadBookTest.o build-test/LandTest.o build/BlackBox.o build/Battery.o build/Land.o build/LandSensor.o build/Coordinates.o build/MapTools.o build/RoadBook.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o
+		$(CPP) -I/home/pepi2013/gmock-1.7.0/include/ test/TestRunner.cpp  build/Battery.o build-test/CoordinatesTest.o build/Coordinates.o build/LandSensor.o build-test/LandTest.o build/Land.o build/MapTools.o build-test/MapToolsTest.o build/RoadBook.o build-test/RoadBookTest.o build/RoadBookCalculator.o build/Robot.o build/Direction.o build/CheckPoint.o build/BlackBox.o build/InstructionListTool.o -L/home/pepi2013/gmock-1.7.0/build -lgmock -lpthread -lcppunit $(LCOV) -o build-test/test
 
 build-test/LandTest.o: test/LandTest.cpp test/LandTest.h src/Land.h 
 		$(CPP) -c test/LandTest.cpp -o build-test/LandTest.o -lcppunit
@@ -68,15 +59,6 @@ build-test/MapToolsTest.o: test/MapToolsTest.cpp test/MapToolsTest.h src/MapTool
 
 build-test/RoadBookTest.o: test/RoadBookTest.cpp test/RoadBookTest.h src/Instruction.h src/RoadBook.h
 		$(CPP) -c test/RoadBookTest.cpp -o build-test/RoadBookTest.o -lcppunit
-
-build-test/RoadBookCalculatorTest.o: test/RoadBookCalculatorTest.cpp test/RoadBookCalculatorTest.cpp 
-		$(CPP) -c test/RoadBookCalculatorTest.cpp -o build-test/RoadBookCalculatorTest.o -lcppunit
-
-build-test/RobotTest.o: test/RobotTest.cpp test/RobotTest.h src/Robot.h
-		$(CPP) -c test/RobotTest.cpp -o build-test/RobotTest.o -lcppunit
-
-build-test/BlackBoxTest.o: test/BlackBoxTest.cpp test/BlackBoxTest.h
-		$(CPP) -c test/BlackBoxTest.cpp -o build-test/BlackBoxTest.o -lcppunit
 
 clean:
 		rm -rf build/* build-test/* src/*.*~ src/*.*~ *.gcov

@@ -24,15 +24,13 @@ void CoordinatesTest::tearDown() {
 }
 
 void CoordinatesTest::testX() {
-    CPPUNIT_ASSERT(c->getX() == 10);
+    CPPUNIT_ASSERT(false);
 }
 
 void CoordinatesTest::testY() {
-    CPPUNIT_ASSERT(c->getY() == 5);
+    CPPUNIT_ASSERT(false);
 }
 
 void CoordinatesTest::testEquals(){
-  Coordinates* c1 = new Coordinates(0, 0);
-  Coordinates* c2 = new Coordinates(0, 0);
-  CPPUNIT_ASSERT(c1 < c2);
+  CPPUNIT_ASSERT(false);
 }
