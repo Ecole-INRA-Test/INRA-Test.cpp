@@ -21,8 +21,7 @@
 class  RoadBookCalculatorTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE( RoadBookCalculatorTest);
 
-    CPPUNIT_TEST(testMethod);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(testCalculateRoadBook1);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -33,9 +32,7 @@ public:
     void tearDown();
 
 private:
-    MockLandSensor* mls;
-    void testMethod();
-    void testFailedMethod();
+    void testCalculateRoadBook1();
 };
 
 #endif	/* ROADBOOKCALCULATORTEST_H */

@@ -16,8 +16,7 @@
 class RobotTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(RobotTest);
 
-    CPPUNIT_TEST(testMethod);
-    CPPUNIT_TEST(testFailedMethod);
+    CPPUNIT_TEST(testGetChargeLevel);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -30,8 +29,7 @@ public:
 private:
     Robot* r;
     MockBattery* m;
-    void testMethod();
-    void testFailedMethod();
+    void testGetChargeLevel();
 };
 
 #endif	/* ROBOTTEST_H */

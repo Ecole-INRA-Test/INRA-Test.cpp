@@ -23,22 +23,16 @@ void RobotTest::setUp() {
 
   
     r = new Robot(1.1, m);
-    //r = new Robot(1.1, new Battery());
 }
 
 void RobotTest::tearDown() {
     delete(m);
 }
 
-void RobotTest::testMethod() {
+void RobotTest::testGetChargeLevel() {
     EXPECT_CALL(*m, getChargeLevel()).WillOnce(Return(95.0));
 
     CPPUNIT_ASSERT(r->getChargeLevel() == 95.0);
-    //CPPUNIT_ASSERT(r->getChargeLevel() == 95.0);
-    CPPUNIT_ASSERT(true);
-}
-
-void RobotTest::testFailedMethod() {
     CPPUNIT_ASSERT(true);
 }
 
