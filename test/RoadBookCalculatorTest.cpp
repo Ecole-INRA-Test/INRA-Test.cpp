@@ -31,10 +31,11 @@ void RoadBookCalculatorTest::testMethod() {
     mls->DelegateToFake();
 //    EXPECT_CALL(*mls, mockIsAccessible(_)).Times(3);
     RoadBook* rb = RoadBookCalculator::calculateRoadBook(mls, Direction::NORTH, c5, c9, new std::vector<Instruction> (), new std::vector<Coordinates*>());
-    while(rb->hasInstruction()){
-	std::cout << rb->next() << std::endl;
-    }
-    CPPUNIT_ASSERT(true);
+    CPPUNIT_ASSERT_EQUAL(TURNLEFT,rb->next() );
+    CPPUNIT_ASSERT_EQUAL(FORWARD,rb->next() );
+    CPPUNIT_ASSERT_EQUAL(TURNLEFT,rb->next() );
+    CPPUNIT_ASSERT_EQUAL(FORWARD,rb->next() );
+    CPPUNIT_ASSERT_EQUAL(false, rb->hasInstruction());
     delete(mls);
 }
 

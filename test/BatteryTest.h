@@ -8,10 +8,8 @@
 #ifndef BATTERYTEST_H
 #define	BATTERYTEST_H
 
-#include "gmock/gmock.h"
 #include <cppunit/extensions/HelperMacros.h>
 #include "../src/Battery.h"
-#include "MockBattery.h"
 
 class BatteryTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(BatteryTest);
@@ -19,7 +17,6 @@ class BatteryTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST(getChargeLevelTest);
     CPPUNIT_TEST(useTest);
     CPPUNIT_TEST(canDeliverTest);
-    CPPUNIT_TEST(chargeLevelTestMock);
     CPPUNIT_TEST_SUITE_END();
 
 public:

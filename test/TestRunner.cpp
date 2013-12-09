@@ -16,7 +16,7 @@
 int main(int argc, char** argv) {
     testing::GTEST_FLAG(throw_on_failure) = true;
     testing::InitGoogleMock(&argc, argv);
-
+    testing::FLAGS_gmock_verbose = "error";
     // Create the event manager and test controller
     CPPUNIT_NS::TestResult controller;
 

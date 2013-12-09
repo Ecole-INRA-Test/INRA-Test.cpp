@@ -34,6 +34,5 @@ void CoordinatesTest::testY() {
 void CoordinatesTest::testEquals(){
   Coordinates* c1 = new Coordinates(0, 0);
   Coordinates* c2 = new Coordinates(0, 0);
-  if (c1 == c1) std::cout << "Youyou" << std::endl;
   CPPUNIT_ASSERT(c1 < c2);
 }
