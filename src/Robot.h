@@ -45,6 +45,7 @@ public:
     void cartographier() throw (int);
     std::vector<std::string>* displayCarte();
     BlackBox* blackbox;
+    double getChargeLevel();
 private:
     Coordinates* position;
     Direction::Directions direction;

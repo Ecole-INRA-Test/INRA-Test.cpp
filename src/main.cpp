@@ -71,6 +71,7 @@ static void displayMenu(){
   cout << "S : reculer" << endl;
   cout << "L : cartographier autour du robot" << endl;
   cout << "M : donner une coordonnee a atteindre" << endl;
+  cout << "B : afficher le niveau de charge de la batterie" << endl;
   cout << "X : quitter" << endl;
   cout << "Saisir la commande" << endl;
 }
@@ -164,6 +165,10 @@ int main(int argc, char** argv) {
 	displayException(e);
       }
       break;
+    case 'B':
+      cout << "Niveau de batterie : " << robot->getChargeLevel() << endl;
+      break;
+
     case 'M' :
       cout << "Coordonnees x,y de la destination" << endl;
       cout << "x: ";

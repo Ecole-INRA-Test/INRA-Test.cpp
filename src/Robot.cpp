@@ -145,3 +145,7 @@ std::vector<std::string>* Robot::displayCarte(){
 	}
 	return carteEncadre;
 }
+
+double Robot::getChargeLevel(){
+return cells->getChargeLevel();
+}

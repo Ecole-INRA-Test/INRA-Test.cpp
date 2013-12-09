@@ -7,6 +7,8 @@
 
 #include "RobotTest.h"
 
+using ::testing::Return;
+using ::testing::_;
 
 CPPUNIT_TEST_SUITE_REGISTRATION(RobotTest);
 
@@ -17,12 +19,22 @@ RobotTest::~RobotTest() {
 }
 
 void RobotTest::setUp() {
+    m = new MockBattery();
+
+  
+    r = new Robot(1.1, m);
+    //r = new Robot(1.1, new Battery());
 }
 
 void RobotTest::tearDown() {
+    delete(m);
 }
 
 void RobotTest::testMethod() {
+    EXPECT_CALL(*m, getChargeLevel()).WillOnce(Return(95.0));
+
+    CPPUNIT_ASSERT(r->getChargeLevel() == 95.0);
+    //CPPUNIT_ASSERT(r->getChargeLevel() == 95.0);
     CPPUNIT_ASSERT(true);
 }
 

@@ -14,10 +14,10 @@
 class Battery {
 public:
     Battery();
-    ~Battery();
+    virtual ~Battery();
     void setUp();
     void charge() ;
-    double getChargeLevel();
+    virtual double getChargeLevel();
     void use(double energy) throw(int);
     bool canDeliver(double neededEnergy);
     static const long CHARGE_TOP = 1000;

@@ -8,8 +8,10 @@
 #ifndef ROBOTTEST_H
 #define	ROBOTTEST_H
 
+#include "gmock/gmock.h"
 #include <cppunit/extensions/HelperMacros.h>
 #include "../src/Robot.h"
+#include "MockBattery.h"
 
 class RobotTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(RobotTest);
@@ -26,6 +28,8 @@ public:
     void tearDown();
 
 private:
+    Robot* r;
+    MockBattery* m;
     void testMethod();
     void testFailedMethod();
 };

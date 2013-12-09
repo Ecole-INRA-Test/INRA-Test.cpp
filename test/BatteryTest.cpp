@@ -6,6 +6,8 @@
  */
 
 #include "BatteryTest.h"
+
+using ::testing::Return;
  
 CPPUNIT_TEST_SUITE_REGISTRATION(BatteryTest);
 
@@ -37,6 +39,14 @@ void BatteryTest::useTest(){
   CPPUNIT_ASSERT_EQUAL((double)75.0, b->getChargeLevel());
   CPPUNIT_ASSERT_THROW(b->use(80.0), int);
 }
+
+void BatteryTest::chargeLevelTestMock(){
+  MockBattery* m = new MockBattery();
+  ON_CALL (*m, getChargeLevel()).WillByDefault(Return(95.0));
+  CPPUNIT_ASSERT_EQUAL(95.0, m->getChargeLevel());
+  delete(m);
+}
+
 
 void BatteryTest::canDeliverTest(){
   b->use(25.0);
