@@ -79,7 +79,7 @@ build-test/BlackBoxTest.o: test/BlackBoxTest.cpp test/BlackBoxTest.h
 		$(CPP) -c test/BlackBoxTest.cpp -o build-test/BlackBoxTest.o -lcppunit
 
 clean:
-		rm -rf build/* build-test/* src/*.*~ src/*.*~ *.gcov
+		rm -rf build/main build/*.o build-test/test build-test/*.o src/*.*~ src/*.*~ *.gcov
 
 run-test: test
 		./build-test/test
