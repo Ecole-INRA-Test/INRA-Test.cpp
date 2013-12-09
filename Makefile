@@ -61,7 +61,7 @@ build-test/RoadBookTest.o: test/RoadBookTest.cpp test/RoadBookTest.h src/Instruc
 		$(CPP) -c test/RoadBookTest.cpp -o build-test/RoadBookTest.o -lcppunit
 
 clean:
-		rm -rf build/* build-test/* src/*.*~ src/*.*~ *.gcov
+		rm -rf build/main build/*.o build-test/test build-test/*.o src/*.*~ src/*.*~ *.gcov
 
 run-test: test
 		./build-test/test
