@@ -12,12 +12,19 @@ set(ROBOT_SOURCES
   src/MapTools.cpp
   src/RoadBook.cpp
   src/RoadBookCalculator.cpp    	
+  test/MyLandSensor.cpp
 )
 
-include_directories(${CUKE_INCLUDE_DIRS} src)
+set(MYLANDSENSOR_SOURCES
+  src/LandSensor.cpp
+  src/Coordinates.cpp
+  src/Land.cpp
+)
+
+include_directories(${CUKE_INCLUDE_DIRS} src test)
 
 add_library(Robot STATIC ${ROBOT_SOURCES} src/Robot)
-
+add_library(MyLandSensor STATIC ${MYLANDSENSOR_SOURCES} test/MyLandSensor)
 #
 # Boost
 #
@@ -90,6 +97,6 @@ endif()
 if(GTEST_FOUND)
     include_directories(${GTEST_INCLUDE_DIRS})
     add_executable(RobotSteps features/step_definitions/RobotSteps)
-    target_link_libraries(RobotSteps Robot ${GTEST_LIBRARIES} ${CUKE_LIBRARIES})
+    target_link_libraries(RobotSteps Robot MyLandSensor ${GTEST_LIBRARIES} ${CUKE_LIBRARIES})
 endif()
 

@@ -2,9 +2,11 @@
 #include <cucumber-cpp/defs.hpp>
 
 #include "Robot.h"
+#include "MyLandSensor.h"
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
 using cucumber::ScenarioScope;
 
 struct RobotCtx {
@@ -14,6 +16,7 @@ struct RobotCtx {
   int error;
   std::vector<std::string>* landingMap;
   std::vector<std::string>* manualMap;
+  MyLandSensor* myLand;
 };
 
 GIVEN("^I have land the robot in X : (\\d+), Y : (\\d+) on the planet$") {
@@ -21,13 +24,35 @@ GIVEN("^I have land the robot in X : (\\d+), Y : (\\d+) on the planet$") {
     REGEX_PARAM(int, y);
     ScenarioScope<RobotCtx> context;
     context->robot = new Robot(1.0, new Battery());
-    context->robot->land(new Coordinates(x, y), new LandSensor(4));
+    context->robot->land(new Coordinates(x, y), new MyLandSensor());
     context->landingMap = context->robot->displayCarte();
 }
 
 GIVEN("^a robot flying$") {
     ScenarioScope<RobotCtx> context;
     context->robot = new Robot(1.0, new Battery());
+}
+
+GIVEN("^A specific land$"){
+    ScenarioScope<RobotCtx> context;
+    context->myLand = new MyLandSensor();
+}
+
+GIVEN("^a coordinate X : (-?\\d+), Y : (-?\\d+) the land is (\\d+)$"){
+    REGEX_PARAM(int, x);
+    REGEX_PARAM(int, y);
+    REGEX_PARAM(int, type);
+    ScenarioScope<RobotCtx> context;
+    context->myLand->setValue(new Coordinates(x,y),Land::getLandByOrdinal(type));
+}
+
+GIVEN("^a robot landed in X : (-?\\d+), Y : (-?\\d+) on the planet$"){
+    REGEX_PARAM(int, x);
+    REGEX_PARAM(int, y);
+    ScenarioScope<RobotCtx> context;
+    context->robot = new Robot(1.0, new Battery());
+    context->robot->land(new Coordinates(x, y), context->myLand);
+    context->landingMap = context->robot->displayCarte();
 }
 
 WHEN("^I press moveForward") {
@@ -84,4 +109,21 @@ THEN("^I get the exception UNLANDED_ROBOT : (.*)$"){
   ScenarioScope<RobotCtx> context;
   REGEX_PARAM(int, expected_error);
   EXPECT_EQ(expected_error, context->error);
+}
+
+THEN("^I have (.*) lines$"){
+
+}
+
+THEN("^I have (.*) rows$"){
+  ScenarioScope<RobotCtx> context;
+  REGEX_PARAM(int, row);
+  for(int i=2; i < context->landingMap->size()-1; i++){
+    std::string line = context->manualMap->at(i);
+    int n = 0;
+    for (int j=0; j<line.size(); j++){
+      if(line[j] == '|') {n++;}
+    }
+    EXPECT_EQ(row, n-1);
+  }
 }

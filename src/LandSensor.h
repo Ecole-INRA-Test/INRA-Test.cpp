@@ -38,10 +38,13 @@ public:
     int getXBottom();
 
     std::vector<std::string>* displayCarte();
-private:
-    //private Random random;
-    Land::Lands lazyGet(Coordinates* coordinate1) throw (int);
+protected:
     std::map<Coordinates*, Land::Lands> carte;
+    Land::Lands lazyGet(Coordinates* coordinate1) throw (int);
+//private:
+    //private Random random;
+    
+    //std::map<Coordinates*, Land::Lands> carte;
     int seed;
     int PORTEE;
     Coordinates* boxTop;
