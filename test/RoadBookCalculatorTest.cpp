@@ -39,6 +39,7 @@ void RoadBookCalculatorTest::testMethod() {
     delete(mls);
 }
 
+
 void RoadBookCalculatorTest::testFailedMethod() {
     CPPUNIT_ASSERT(true);
 }

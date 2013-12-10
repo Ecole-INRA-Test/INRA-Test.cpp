@@ -19,7 +19,12 @@
 
 class MockBattery : public Battery {
 public:
-   
+  
+  /*Classe MockBattery qui hérite de la classe Battery
+    MOCK_METHOD0 = mocker une méthode avec 0 paramètre
+    MOCK_METHOD0(m, type(param)) m = méthode à mocker, type = type de retour de la méthode à mocker
+    param = paramètre(s) de la méthode à mocker (0 ou N)
+   */
   MOCK_METHOD0(getChargeLevel, double());
  
 };
