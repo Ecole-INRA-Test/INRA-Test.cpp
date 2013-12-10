@@ -1,2 +1,0 @@
-/home/pepi2013/projects/INRA-Test.cpp/build-test/CMakeFiles/Robot.dir
-/home/pepi2013/projects/INRA-Test.cpp/build-test/CMakeFiles/RobotSteps.dir
