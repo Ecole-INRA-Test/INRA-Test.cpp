@@ -46,6 +46,7 @@ public:
     std::vector<std::string>* displayCarte();
     BlackBox* blackbox;
     double getChargeLevel();
+    bool canDeliver(double energy);
 private:
     Coordinates* position;
     Direction::Directions direction;

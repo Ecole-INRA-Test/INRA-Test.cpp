@@ -12,11 +12,14 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include "../src/Robot.h"
 #include "MockBattery.h"
+#include "MockLandSensor.h"
 
 class RobotTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(RobotTest);
 
     CPPUNIT_TEST(testGetChargeLevel);
+    CPPUNIT_TEST(testMoveForward);
+    CPPUNIT_TEST(testMoveForwardException);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -29,7 +32,10 @@ public:
 private:
     Robot* r;
     MockBattery* m;
+    MockLandSensor* mls;
     void testGetChargeLevel();
+    void testMoveForward();
+    void testMoveForwardException();
 };
 
 #endif	/* ROBOTTEST_H */

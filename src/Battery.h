@@ -19,7 +19,7 @@ public:
     void charge() ;
     virtual double getChargeLevel();
     void use(double energy) throw(int);
-    bool canDeliver(double neededEnergy);
+    virtual bool canDeliver(double neededEnergy);
     static const long CHARGE_TOP = 1000;
     static const long CHARGE_STEP = 10;
 private:

@@ -6,7 +6,7 @@
  */
 
 #include "Robot.h"
-
+#include <iostream>
 
 Robot::Robot(double energy, Battery* battery) {
 	isLanded = false;
@@ -148,4 +148,11 @@ std::vector<std::string>* Robot::displayCarte(){
 
 double Robot::getChargeLevel(){
 return cells->getChargeLevel();
+}
+
+bool Robot::canDeliver(double energy){
+std::cout<< cells << std::endl;
+
+std::cout<< cells->canDeliver(energy) << std::endl;
+return cells->canDeliver(energy);
 }

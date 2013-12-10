@@ -21,6 +21,7 @@ class MockBattery : public Battery {
 public:
    
   MOCK_METHOD0(getChargeLevel, double());
+  MOCK_METHOD1(canDeliver, bool(double));
  
 };
 

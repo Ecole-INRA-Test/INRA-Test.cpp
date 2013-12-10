@@ -28,7 +28,7 @@ public:
         this.random = random;
     }*/
 
-    double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int);
+    virtual double getPointToPointEnergyCoefficient(Coordinates* coordinate1, Coordinates* coordinate2) throw (int);
 
     virtual bool isAccessible(Coordinates* coordinate) throw (int);
 
