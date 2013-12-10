@@ -115,7 +115,7 @@ std::vector<std::string>* LandSensor::displayCarte(){
 	grille->push_back(text);
 	//ligne.flush();
         for (i = boxTop->getY() ; i < boxBottom->getY() + 1 ; i++) {
-		text =  i + "\t|\t";
+		text =  "\t|\t";
 		//ligne << i << "\t|\t";
 		//ligne << i << "|";
 		for (j = boxTop->getX() ; j < boxBottom->getX() + 1 ; j++) {
