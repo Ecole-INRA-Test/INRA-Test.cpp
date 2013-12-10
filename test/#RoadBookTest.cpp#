@@ -28,9 +28,8 @@ void RoadBookTest::hasInstructionTest(){
   CPPUNIT_ASSERT(myRoadBook->hasInstruction());
   myInstructions->clear();
   CPPUNIT_ASSERT(!myRoadBook->hasInstruction());
-
-  
 }
+
 
 void RoadBookTest::tearDown() {
 }

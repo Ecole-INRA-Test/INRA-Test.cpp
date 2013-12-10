@@ -14,7 +14,10 @@
 class MapToolsTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(MapToolsTest);
 
- 
+    CPPUNIT_TEST( testNextForwardPos );
+    CPPUNIT_TEST( testNextBackwardPos );
+    CPPUNIT_TEST( testCounterclockwise );
+    CPPUNIT_TEST( testClockwise );
     CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -22,6 +25,10 @@ public:
     virtual ~MapToolsTest();
     void setUp();
     void tearDown();
+    void testNextForwardPos();
+    void testNextBackwardPos();
+    void testCounterclockwise();
+    void testClockwise();
 
 private:
 };

@@ -13,7 +13,7 @@
 
 class RoadBookTest : public CPPUNIT_NS::TestFixture {
     CPPUNIT_TEST_SUITE(RoadBookTest);
-
+    CPPUNIT_TEST(hasInstructionTest);
 
     CPPUNIT_TEST_SUITE_END();
 
@@ -24,6 +24,9 @@ public:
     void tearDown();
 
 private:
+    void hasInstructionTest();
+    RoadBook* myRoadBook;
+    std::vector<Instruction>* myInstructions;
 };
 
 #endif	/* ROADBOOKTEST_H */
