@@ -55,27 +55,12 @@ GIVEN("^a robot landed in X : (-?\\d+), Y : (-?\\d+) on the planet$"){
     context->landingMap = context->robot->displayCarte();
 }
 
-WHEN("^I press moveForward") {
-    ScenarioScope<RobotCtx> context;
 
-    context->robot->moveForward();   
+WHEN("^I press moveForward$") {
+   ScenarioScope<RobotCtx> context;
+   context->robot->moveForward();
 }
 
-WHEN("^I press moveBackward") {
-    ScenarioScope<RobotCtx> context;
-
-    context->robot->moveBackward();   
-}
-WHEN("^I press turnLeft") {
-    ScenarioScope<RobotCtx> context;
-
-    context->robot->turnLeft();   
-}
-WHEN("^I press turnRight") {
-    ScenarioScope<RobotCtx> context;
-
-    context->robot->turnRight();   
-}
 WHEN("^I press cartographier") {
     ScenarioScope<RobotCtx> context;
     try{
@@ -98,32 +83,9 @@ THEN("^the robot is in X : (.*), Y : (.*)$") {
     EXPECT_EQ(expected_y, context->y_result);
 }
 
-THEN("^we have the same map$"){
-  ScenarioScope<RobotCtx> context;
-  for(int i=0; i < context->landingMap->size(); i++){
-    EXPECT_EQ(context->landingMap->at(i), context->manualMap->at(i));
-  }
-}
-
 THEN("^I get the exception UNLANDED_ROBOT : (.*)$"){
   ScenarioScope<RobotCtx> context;
   REGEX_PARAM(int, expected_error);
   EXPECT_EQ(expected_error, context->error);
 }
 
-THEN("^I have (.*) lines$"){
-
-}
-
-THEN("^I have (.*) rows$"){
-  ScenarioScope<RobotCtx> context;
-  REGEX_PARAM(int, row);
-  for(int i=2; i < context->landingMap->size()-1; i++){
-    std::string line = context->manualMap->at(i);
-    int n = 0;
-    for (int j=0; j<line.size(); j++){
-      if(line[j] == '|') {n++;}
-    }
-    EXPECT_EQ(row, n-1);
-  }
-}

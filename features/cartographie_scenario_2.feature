@@ -91,4 +91,3 @@ Feature: Robot
     And I press moveBackward
     And I press cartographier
     Then we have the same map
-    And I have 9 rows
