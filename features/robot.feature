@@ -12,5 +12,3 @@ Feature: Robot
     | position_x_1 | position_y_1 | doSomething | position_x_2 | position_y_2 |
     | 5                           | 5                           | moveForward | 5                          | 4                          |
     | 0                           | 0                           | moveForward | 0                          | -1                          |
-    | 5                           | 5                           | moveBackward | 5                          | 6                          |
-  

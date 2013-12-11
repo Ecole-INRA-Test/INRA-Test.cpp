@@ -19,7 +19,7 @@ struct RobotCtx {
   MyLandSensor* myLand;
 };
 
-GIVEN("^I have land the robot in X : (\\d+), Y : (\\d+) on the planet$") {
+GIVEN("^I have land the robot in X : (-?\\d+), Y : (-?\\d+) on the planet$") {
     REGEX_PARAM(int, x);
     REGEX_PARAM(int, y);
     ScenarioScope<RobotCtx> context;
