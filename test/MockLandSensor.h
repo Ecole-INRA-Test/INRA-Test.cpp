@@ -21,8 +21,7 @@ using ::testing::Invoke;
 
 class MockLandSensor : public LandSensor {
 public:
-   
-  MOCK_METHOD1(mockIsAccessible, bool(Coordinates* coordinate));
+  MOCK_METHOD1(mockIsAccessible, bool(Coordinates* c));
   virtual bool isAccessible(Coordinates* coordinate) throw (int){
      return mockIsAccessible(coordinate);
   }
