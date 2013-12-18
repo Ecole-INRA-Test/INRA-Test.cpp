@@ -79,7 +79,11 @@ build-test/BlackBoxTest.o: test/BlackBoxTest.cpp test/BlackBoxTest.h
 		$(CPP) -c test/BlackBoxTest.cpp -o build-test/BlackBoxTest.o -lcppunit
 
 clean:
+<<<<<<< HEAD
 		rm -rf build/main build/*.o build-test/test build-test/*.o src/*.*~ src/*.*~ *.gcov
+=======
+		rm -rf build/main build/*.o build/CMake* build/Makefile build/cmake* build-test/test build-test/*.o build-test/CMake* build-test/Makefile build-test/cmake* build-test/RobotSteps src/*.*~ src/*.*~ *.gcov
+>>>>>>> step4
 
 run-test: test
 		./build-test/test
